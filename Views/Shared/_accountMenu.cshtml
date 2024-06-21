@@ -1,0 +1,25 @@
+﻿@{
+    var urlParts = Context.Request.GetDisplayUrl().ToLower().Split('/');
+}
+
+
+<ul class="account-nav">
+    @if (User.FindFirst(ClaimTypes.Role).Value == "Admin")
+    {
+        <li><a href="/admin/AdminPanel" class="menu-link menu-link_us-s @(urlParts.Contains("adminpanel")? "menu-link_active" : "")">Admin Panel</a></li>
+        <li><a href="/user/accountedit" class="menu-link menu-link_us-s @(urlParts.Contains("accountedit")? "menu-link_active" : "")">Account Details</a></li>
+        <li><a href="/admin/Userslist" class="menu-link menu-link_us-s @(urlParts.Contains("userslist")? "menu-link_active" : "")">Users list</a></li>
+        <li><a href="/admin/addproduct" class="menu-link menu-link_us-s @(urlParts.Contains("addproduct")? "menu-link_active" : "")">Add Product</a></li>
+        <li><a href="/admin/confirmOrders" class="menu-link menu-link_us-s @(urlParts.Contains("confirmorders")? "menu-link_active" : "")">Orders awaiting confirmation</a></li>
+        <li><a href="/admin/confirmProduct" class="menu-link menu-link_us-s @(urlParts.Contains("confirmproduct")? "menu-link_active" : "")">Products awaiting confirmation</a></li>
+    }
+    else
+    {
+        <li><a href="/user/AccountDashboard" class="menu-link menu-link_us-s @(urlParts.Contains("accountdashboard")? "menu-link_active" : "")">Dashboard</a></li>
+        <li><a href="/user/accountedit" class="menu-link menu-link_us-s @(urlParts.Contains("accountedit")? "menu-link_active" : "")">Account Details</a></li>
+        <li><a href="/user/AccountOrders" class="menu-link menu-link_us-s @(urlParts.Contains("accountorders")? "menu-link_active" : "")">Orders</a></li>
+        <li><a href="/user/accountAddresses" class="menu-link menu-link_us-s @(urlParts.Contains("accountaddresses")? "menu-link_active" : "")">Addresses</a></li>
+        <li><a href="/user/accountWishlist" class="menu-link menu-link_us-s @(urlParts.Contains("accountwishlist")? "menu-link_active" : "")">Wishlist</a></li>
+    }
+    <li><a href="/user/logout" class="menu-link menu-link_us-s">Log out</a></li>
+</ul>

@@ -1,0 +1,544 @@
+﻿<section style="padding-top: 80px;">
+    <div class="my-account container mt-4 pt-4 mb-5 pb-5">
+        <h2 class="page-title">WISHLIST</h2>
+        <div class="row">
+            <div class="col-lg-3">
+                @await Html.PartialAsync("_accountMenu")
+            </div>
+            <div class="col-lg-9">
+                <div class="page-content my-account__wishlist">
+                    <div class="products-grid row row-cols-2 row-cols-lg-3" id="products-grid">
+                        <div class="card border-0 mb-3 mb-md-4 mb-xxl-5 text-start">
+                            <div class="card-img position-relative">
+                                <img src="https://uomo-html.flexkitux.com/images/products/product_5.jpg"
+                                     class="card-img-top  rounded-0" width="330" height="400" alt="...">
+                                <div class="position-absolute top-0 start-0 w-100 d-flex justify-content-between"
+                                     style="padding: 10px;">
+                                    <div class="">
+                                        <span class="d-block bg-white py-1 px-2">NEW</span>
+                                    </div>
+                                    <div class=" ms-auto">
+                                        <span class="  d-block bg-danger text-white py-1 px-2">-67%</span>
+                                    </div>
+                                </div>
+                                <a class="btn position-absolute border-0 text-uppercase fw-500 ">Add To Cart</a>
+                            </div>
+                            <div class="card-body position-relative p-0 mt-3">
+                                <p class="item-category text-secondary  mb-1">Dresses</p>
+                                <h6 class="card-title mb-0 fw-normal">
+                                    <a href="./product1_simple.html">Kirby T-Shirt</a>
+                                    <div class="product-card__price d-flex">
+                                        <span class="money price">$17</span>
+                                    </div>
+                                    <div class="product-card__review d-flex align-items-center">
+                                        <div class="reviews-group d-flex">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor"
+                                                 class="bi bi-star-fill me-1" viewBox="0 0 16 16">
+                                                <path class="text-warning"
+                                                      d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                                            </svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor"
+                                                 class="bi bi-star-fill me-1" viewBox="0 0 16 16">
+                                                <path class="text-warning"
+                                                      d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                                            </svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor"
+                                                 class="bi bi-star-fill me-1" viewBox="0 0 16 16">
+                                                <path class="text-warning"
+                                                      d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                                            </svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor"
+                                                 class="bi bi-star-half me-1" viewBox="0 0 16 16">
+                                                <path class="text-warning"
+                                                      d="M5.354 5.119 7.538.792A.52.52 0 0 1 8 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.54.54 0 0 1 16 6.32a.55.55 0 0 1-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.5.5 0 0 1-.146.05c-.342.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 0 1-.172-.403.6.6 0 0 1 .085-.302.51.51 0 0 1 .37-.245zM8 12.027a.5.5 0 0 1 .232.056l3.686 1.894-.694-3.957a.56.56 0 0 1 .162-.505l2.907-2.77-4.052-.576a.53.53 0 0 1-.393-.288L8.001 2.223 8 2.226z" />
+                                            </svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor"
+                                                 class="bi bi-star me-1" viewBox="0 0 16 16">
+                                                <path class="text-warning"
+                                                      d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.56.56 0 0 0-.163-.505L1.71 6.745l4.052-.576a.53.53 0 0 0 .393-.288L8 2.223l1.847 3.658a.53.53 0 0 0 .393.288l4.052.575-2.906 2.77a.56.56 0 0 0-.163.506l.694 3.957-3.686-1.894a.5.5 0 0 0-.461 0z" />
+                                            </svg>
+                                        </div>
+                                        <span class="reviews-note text-secondary ms-1 ">8k+ reviews</span>
+                                        <div class="d-flex align-items-center mt-1 ms-auto">
+                                            <a href="#" class="swatch-color pc__swatch-color"
+                                               style="color: #222222 !important"></a>
+                                            <a href="#" class="swatch-color swatch_active pc__swatch-color"
+                                               style="color: #b9a16b !important"></a>
+                                            <a href="#" class="swatch-color pc__swatch-color"
+                                               style="color: #f5e6e0 !important"></a>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="position-absolute top-0 end-0 px-2 lh-1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                             class="bi bi-heart" viewBox="0 0 16 16">
+                                            <path class="text-secondary"
+                                                  d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
+                                        </svg>
+                                    </a>
+
+                                    <!-- <a class="add-to-card" href="#"></a> -->
+                            </div>
+                        </div>
+                        <div class="card border-0 mb-3 mb-md-4 mb-xxl-5 text-start">
+                            <div class="card-img position-relative">
+                                <img src="https://uomo-html.flexkitux.com/images/products/product_5.jpg"
+                                     class="card-img-top  rounded-0" width="330" height="400" alt="...">
+                                <div class="position-absolute top-0 start-0 w-100 d-flex justify-content-between"
+                                     style="padding: 10px;">
+                                    <div class="">
+                                        <span class="d-block bg-white py-1 px-2">NEW</span>
+                                    </div>
+                                    <div class=" ms-auto">
+                                        <span class="  d-block bg-danger text-white py-1 px-2">-67%</span>
+                                    </div>
+                                </div>
+                                <a class="btn position-absolute border-0 text-uppercase fw-500 ">Add To Cart</a>
+                            </div>
+                            <div class="card-body position-relative p-0 mt-3">
+                                <p class="item-category text-secondary  mb-1">Dresses</p>
+                                <h6 class="card-title mb-0 fw-normal">
+                                    <a href="./product1_simple.html">Kirby T-Shirt</a>
+                                    <div class="product-card__price d-flex">
+                                        <span class="money price">$17</span>
+                                    </div>
+                                    <div class="product-card__review d-flex align-items-center">
+                                        <div class="reviews-group d-flex">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor"
+                                                 class="bi bi-star-fill me-1" viewBox="0 0 16 16">
+                                                <path class="text-warning"
+                                                      d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                                            </svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor"
+                                                 class="bi bi-star-fill me-1" viewBox="0 0 16 16">
+                                                <path class="text-warning"
+                                                      d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                                            </svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor"
+                                                 class="bi bi-star-fill me-1" viewBox="0 0 16 16">
+                                                <path class="text-warning"
+                                                      d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                                            </svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor"
+                                                 class="bi bi-star-half me-1" viewBox="0 0 16 16">
+                                                <path class="text-warning"
+                                                      d="M5.354 5.119 7.538.792A.52.52 0 0 1 8 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.54.54 0 0 1 16 6.32a.55.55 0 0 1-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.5.5 0 0 1-.146.05c-.342.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 0 1-.172-.403.6.6 0 0 1 .085-.302.51.51 0 0 1 .37-.245zM8 12.027a.5.5 0 0 1 .232.056l3.686 1.894-.694-3.957a.56.56 0 0 1 .162-.505l2.907-2.77-4.052-.576a.53.53 0 0 1-.393-.288L8.001 2.223 8 2.226z" />
+                                            </svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor"
+                                                 class="bi bi-star me-1" viewBox="0 0 16 16">
+                                                <path class="text-warning"
+                                                      d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.56.56 0 0 0-.163-.505L1.71 6.745l4.052-.576a.53.53 0 0 0 .393-.288L8 2.223l1.847 3.658a.53.53 0 0 0 .393.288l4.052.575-2.906 2.77a.56.56 0 0 0-.163.506l.694 3.957-3.686-1.894a.5.5 0 0 0-.461 0z" />
+                                            </svg>
+                                        </div>
+                                        <span class="reviews-note text-secondary ms-1 ">8k+ reviews</span>
+                                        <div class="d-flex align-items-center mt-1 ms-auto">
+                                            <a href="#" class="swatch-color pc__swatch-color"
+                                               style="color: #222222 !important"></a>
+                                            <a href="#" class="swatch-color swatch_active pc__swatch-color"
+                                               style="color: #b9a16b !important"></a>
+                                            <a href="#" class="swatch-color pc__swatch-color"
+                                               style="color: #f5e6e0 !important"></a>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="position-absolute top-0 end-0 px-2 lh-1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                             class="bi bi-heart" viewBox="0 0 16 16">
+                                            <path class="text-secondary"
+                                                  d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
+                                        </svg>
+                                    </a>
+
+                                    <!-- <a class="add-to-card" href="#"></a> -->
+                            </div>
+                        </div>
+                        <div class="card border-0 mb-3 mb-md-4 mb-xxl-5 text-start">
+                            <div class="card-img position-relative">
+                                <img src="https://uomo-html.flexkitux.com/images/products/product_5.jpg"
+                                     class="card-img-top  rounded-0" width="330" height="400" alt="...">
+                                <div class="position-absolute top-0 start-0 w-100 d-flex justify-content-between"
+                                     style="padding: 10px;">
+                                    <div class="">
+                                        <span class="d-block bg-white py-1 px-2">NEW</span>
+                                    </div>
+                                    <div class=" ms-auto">
+                                        <span class="  d-block bg-danger text-white py-1 px-2">-67%</span>
+                                    </div>
+                                </div>
+                                <a class="btn position-absolute border-0 text-uppercase fw-500 ">Add To Cart</a>
+                            </div>
+                            <div class="card-body position-relative p-0 mt-3">
+                                <p class="item-category text-secondary  mb-1">Dresses</p>
+                                <h6 class="card-title mb-0 fw-normal">
+                                    <a href="./product1_simple.html">Kirby T-Shirt</a>
+                                    <div class="product-card__price d-flex">
+                                        <span class="money price">$17</span>
+                                    </div>
+                                    <div class="product-card__review d-flex align-items-center">
+                                        <div class="reviews-group d-flex">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor"
+                                                 class="bi bi-star-fill me-1" viewBox="0 0 16 16">
+                                                <path class="text-warning"
+                                                      d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                                            </svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor"
+                                                 class="bi bi-star-fill me-1" viewBox="0 0 16 16">
+                                                <path class="text-warning"
+                                                      d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                                            </svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor"
+                                                 class="bi bi-star-fill me-1" viewBox="0 0 16 16">
+                                                <path class="text-warning"
+                                                      d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                                            </svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor"
+                                                 class="bi bi-star-half me-1" viewBox="0 0 16 16">
+                                                <path class="text-warning"
+                                                      d="M5.354 5.119 7.538.792A.52.52 0 0 1 8 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.54.54 0 0 1 16 6.32a.55.55 0 0 1-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.5.5 0 0 1-.146.05c-.342.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 0 1-.172-.403.6.6 0 0 1 .085-.302.51.51 0 0 1 .37-.245zM8 12.027a.5.5 0 0 1 .232.056l3.686 1.894-.694-3.957a.56.56 0 0 1 .162-.505l2.907-2.77-4.052-.576a.53.53 0 0 1-.393-.288L8.001 2.223 8 2.226z" />
+                                            </svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor"
+                                                 class="bi bi-star me-1" viewBox="0 0 16 16">
+                                                <path class="text-warning"
+                                                      d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.56.56 0 0 0-.163-.505L1.71 6.745l4.052-.576a.53.53 0 0 0 .393-.288L8 2.223l1.847 3.658a.53.53 0 0 0 .393.288l4.052.575-2.906 2.77a.56.56 0 0 0-.163.506l.694 3.957-3.686-1.894a.5.5 0 0 0-.461 0z" />
+                                            </svg>
+                                        </div>
+                                        <span class="reviews-note text-secondary ms-1 ">8k+ reviews</span>
+                                        <div class="d-flex align-items-center mt-1 ms-auto">
+                                            <a href="#" class="swatch-color pc__swatch-color"
+                                               style="color: #222222 !important"></a>
+                                            <a href="#" class="swatch-color swatch_active pc__swatch-color"
+                                               style="color: #b9a16b !important"></a>
+                                            <a href="#" class="swatch-color pc__swatch-color"
+                                               style="color: #f5e6e0 !important"></a>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="position-absolute top-0 end-0 px-2 lh-1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                             class="bi bi-heart" viewBox="0 0 16 16">
+                                            <path class="text-secondary"
+                                                  d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
+                                        </svg>
+                                    </a>
+
+                                    <!-- <a class="add-to-card" href="#"></a> -->
+                            </div>
+                        </div>
+                        <div class="card border-0 mb-3 mb-md-4 mb-xxl-5 text-start">
+                            <div class="card-img position-relative">
+                                <img src="https://uomo-html.flexkitux.com/images/products/product_5.jpg"
+                                     class="card-img-top  rounded-0" width="330" height="400" alt="...">
+                                <div class="position-absolute top-0 start-0 w-100 d-flex justify-content-between"
+                                     style="padding: 10px;">
+                                    <div class="">
+                                        <span class="d-block bg-white py-1 px-2">NEW</span>
+                                    </div>
+                                    <div class=" ms-auto">
+                                        <span class="  d-block bg-danger text-white py-1 px-2">-67%</span>
+                                    </div>
+                                </div>
+                                <a class="btn position-absolute border-0 text-uppercase fw-500 ">Add To Cart</a>
+                            </div>
+                            <div class="card-body position-relative p-0 mt-3">
+                                <p class="item-category text-secondary  mb-1">Dresses</p>
+                                <h6 class="card-title mb-0 fw-normal">
+                                    <a href="./product1_simple.html">Kirby T-Shirt</a>
+                                    <div class="product-card__price d-flex">
+                                        <span class="money price">$17</span>
+                                    </div>
+                                    <div class="product-card__review d-flex align-items-center">
+                                        <div class="reviews-group d-flex">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor"
+                                                 class="bi bi-star-fill me-1" viewBox="0 0 16 16">
+                                                <path class="text-warning"
+                                                      d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                                            </svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor"
+                                                 class="bi bi-star-fill me-1" viewBox="0 0 16 16">
+                                                <path class="text-warning"
+                                                      d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                                            </svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor"
+                                                 class="bi bi-star-fill me-1" viewBox="0 0 16 16">
+                                                <path class="text-warning"
+                                                      d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                                            </svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor"
+                                                 class="bi bi-star-half me-1" viewBox="0 0 16 16">
+                                                <path class="text-warning"
+                                                      d="M5.354 5.119 7.538.792A.52.52 0 0 1 8 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.54.54 0 0 1 16 6.32a.55.55 0 0 1-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.5.5 0 0 1-.146.05c-.342.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 0 1-.172-.403.6.6 0 0 1 .085-.302.51.51 0 0 1 .37-.245zM8 12.027a.5.5 0 0 1 .232.056l3.686 1.894-.694-3.957a.56.56 0 0 1 .162-.505l2.907-2.77-4.052-.576a.53.53 0 0 1-.393-.288L8.001 2.223 8 2.226z" />
+                                            </svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor"
+                                                 class="bi bi-star me-1" viewBox="0 0 16 16">
+                                                <path class="text-warning"
+                                                      d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.56.56 0 0 0-.163-.505L1.71 6.745l4.052-.576a.53.53 0 0 0 .393-.288L8 2.223l1.847 3.658a.53.53 0 0 0 .393.288l4.052.575-2.906 2.77a.56.56 0 0 0-.163.506l.694 3.957-3.686-1.894a.5.5 0 0 0-.461 0z" />
+                                            </svg>
+                                        </div>
+                                        <span class="reviews-note text-secondary ms-1 ">8k+ reviews</span>
+                                        <div class="d-flex align-items-center mt-1 ms-auto">
+                                            <a href="#" class="swatch-color pc__swatch-color"
+                                               style="color: #222222 !important"></a>
+                                            <a href="#" class="swatch-color swatch_active pc__swatch-color"
+                                               style="color: #b9a16b !important"></a>
+                                            <a href="#" class="swatch-color pc__swatch-color"
+                                               style="color: #f5e6e0 !important"></a>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="position-absolute top-0 end-0 px-2 lh-1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                             class="bi bi-heart" viewBox="0 0 16 16">
+                                            <path class="text-secondary"
+                                                  d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
+                                        </svg>
+                                    </a>
+
+                                    <!-- <a class="add-to-card" href="#"></a> -->
+                            </div>
+                        </div>
+                        <div class="card border-0 mb-3 mb-md-4 mb-xxl-5 text-start">
+                            <div class="card-img position-relative">
+                                <img src="https://uomo-html.flexkitux.com/images/products/product_5.jpg"
+                                     class="card-img-top  rounded-0" width="330" height="400" alt="...">
+                                <div class="position-absolute top-0 start-0 w-100 d-flex justify-content-between"
+                                     style="padding: 10px;">
+                                    <div class="">
+                                        <span class="d-block bg-white py-1 px-2">NEW</span>
+                                    </div>
+                                    <div class=" ms-auto">
+                                        <span class="  d-block bg-danger text-white py-1 px-2">-67%</span>
+                                    </div>
+                                </div>
+                                <a class="btn position-absolute border-0 text-uppercase fw-500 ">Add To Cart</a>
+                            </div>
+                            <div class="card-body position-relative p-0 mt-3">
+                                <p class="item-category text-secondary  mb-1">Dresses</p>
+                                <h6 class="card-title mb-0 fw-normal">
+                                    <a href="./product1_simple.html">Kirby T-Shirt</a>
+                                    <div class="product-card__price d-flex">
+                                        <span class="money price">$17</span>
+                                    </div>
+                                    <div class="product-card__review d-flex align-items-center">
+                                        <div class="reviews-group d-flex">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor"
+                                                 class="bi bi-star-fill me-1" viewBox="0 0 16 16">
+                                                <path class="text-warning"
+                                                      d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                                            </svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor"
+                                                 class="bi bi-star-fill me-1" viewBox="0 0 16 16">
+                                                <path class="text-warning"
+                                                      d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                                            </svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor"
+                                                 class="bi bi-star-fill me-1" viewBox="0 0 16 16">
+                                                <path class="text-warning"
+                                                      d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                                            </svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor"
+                                                 class="bi bi-star-half me-1" viewBox="0 0 16 16">
+                                                <path class="text-warning"
+                                                      d="M5.354 5.119 7.538.792A.52.52 0 0 1 8 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.54.54 0 0 1 16 6.32a.55.55 0 0 1-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.5.5 0 0 1-.146.05c-.342.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 0 1-.172-.403.6.6 0 0 1 .085-.302.51.51 0 0 1 .37-.245zM8 12.027a.5.5 0 0 1 .232.056l3.686 1.894-.694-3.957a.56.56 0 0 1 .162-.505l2.907-2.77-4.052-.576a.53.53 0 0 1-.393-.288L8.001 2.223 8 2.226z" />
+                                            </svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor"
+                                                 class="bi bi-star me-1" viewBox="0 0 16 16">
+                                                <path class="text-warning"
+                                                      d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.56.56 0 0 0-.163-.505L1.71 6.745l4.052-.576a.53.53 0 0 0 .393-.288L8 2.223l1.847 3.658a.53.53 0 0 0 .393.288l4.052.575-2.906 2.77a.56.56 0 0 0-.163.506l.694 3.957-3.686-1.894a.5.5 0 0 0-.461 0z" />
+                                            </svg>
+                                        </div>
+                                        <span class="reviews-note text-secondary ms-1 ">8k+ reviews</span>
+                                        <div class="d-flex align-items-center mt-1 ms-auto">
+                                            <a href="#" class="swatch-color pc__swatch-color"
+                                               style="color: #222222 !important"></a>
+                                            <a href="#" class="swatch-color swatch_active pc__swatch-color"
+                                               style="color: #b9a16b !important"></a>
+                                            <a href="#" class="swatch-color pc__swatch-color"
+                                               style="color: #f5e6e0 !important"></a>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="position-absolute top-0 end-0 px-2 lh-1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                             class="bi bi-heart" viewBox="0 0 16 16">
+                                            <path class="text-secondary"
+                                                  d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
+                                        </svg>
+                                    </a>
+
+                                    <!-- <a class="add-to-card" href="#"></a> -->
+                            </div>
+                        </div>
+                        <div class="card border-0 mb-3 mb-md-4 mb-xxl-5 text-start">
+                            <div class="card-img position-relative">
+                                <img src="https://uomo-html.flexkitux.com/images/products/product_5.jpg"
+                                     class="card-img-top  rounded-0" width="330" height="400" alt="...">
+                                <div class="position-absolute top-0 start-0 w-100 d-flex justify-content-between"
+                                     style="padding: 10px;">
+                                    <div class="">
+                                        <span class="d-block bg-white py-1 px-2">NEW</span>
+                                    </div>
+                                    <div class=" ms-auto">
+                                        <span class="  d-block bg-danger text-white py-1 px-2">-67%</span>
+                                    </div>
+                                </div>
+                                <a class="btn position-absolute border-0 text-uppercase fw-500 ">Add To Cart</a>
+                            </div>
+                            <div class="card-body position-relative p-0 mt-3">
+                                <p class="item-category text-secondary  mb-1">Dresses</p>
+                                <h6 class="card-title mb-0 fw-normal">
+                                    <a href="./product1_simple.html">Kirby T-Shirt</a>
+                                    <div class="product-card__price d-flex">
+                                        <span class="money price">$17</span>
+                                    </div>
+                                    <div class="product-card__review d-flex align-items-center">
+                                        <div class="reviews-group d-flex">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor"
+                                                 class="bi bi-star-fill me-1" viewBox="0 0 16 16">
+                                                <path class="text-warning"
+                                                      d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                                            </svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor"
+                                                 class="bi bi-star-fill me-1" viewBox="0 0 16 16">
+                                                <path class="text-warning"
+                                                      d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                                            </svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor"
+                                                 class="bi bi-star-fill me-1" viewBox="0 0 16 16">
+                                                <path class="text-warning"
+                                                      d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                                            </svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor"
+                                                 class="bi bi-star-half me-1" viewBox="0 0 16 16">
+                                                <path class="text-warning"
+                                                      d="M5.354 5.119 7.538.792A.52.52 0 0 1 8 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.54.54 0 0 1 16 6.32a.55.55 0 0 1-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.5.5 0 0 1-.146.05c-.342.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 0 1-.172-.403.6.6 0 0 1 .085-.302.51.51 0 0 1 .37-.245zM8 12.027a.5.5 0 0 1 .232.056l3.686 1.894-.694-3.957a.56.56 0 0 1 .162-.505l2.907-2.77-4.052-.576a.53.53 0 0 1-.393-.288L8.001 2.223 8 2.226z" />
+                                            </svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor"
+                                                 class="bi bi-star me-1" viewBox="0 0 16 16">
+                                                <path class="text-warning"
+                                                      d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.56.56 0 0 0-.163-.505L1.71 6.745l4.052-.576a.53.53 0 0 0 .393-.288L8 2.223l1.847 3.658a.53.53 0 0 0 .393.288l4.052.575-2.906 2.77a.56.56 0 0 0-.163.506l.694 3.957-3.686-1.894a.5.5 0 0 0-.461 0z" />
+                                            </svg>
+                                        </div>
+                                        <span class="reviews-note text-secondary ms-1 ">8k+ reviews</span>
+                                        <div class="d-flex align-items-center mt-1 ms-auto">
+                                            <a href="#" class="swatch-color pc__swatch-color"
+                                               style="color: #222222 !important"></a>
+                                            <a href="#" class="swatch-color swatch_active pc__swatch-color"
+                                               style="color: #b9a16b !important"></a>
+                                            <a href="#" class="swatch-color pc__swatch-color"
+                                               style="color: #f5e6e0 !important"></a>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="position-absolute top-0 end-0 px-2 lh-1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                             class="bi bi-heart" viewBox="0 0 16 16">
+                                            <path class="text-secondary"
+                                                  d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
+                                        </svg>
+                                    </a>
+
+                                    <!-- <a class="add-to-card" href="#"></a> -->
+                            </div>
+                        </div>
+                        <div class="card border-0 mb-3 mb-md-4 mb-xxl-5 text-start">
+                            <div class="card-img position-relative">
+                                <img src="https://uomo-html.flexkitux.com/images/products/product_5.jpg"
+                                     class="card-img-top  rounded-0" width="330" height="400" alt="...">
+                                <div class="position-absolute top-0 start-0 w-100 d-flex justify-content-between"
+                                     style="padding: 10px;">
+                                    <div class="">
+                                        <span class="d-block bg-white py-1 px-2">NEW</span>
+                                    </div>
+                                    <div class=" ms-auto">
+                                        <span class="  d-block bg-danger text-white py-1 px-2">-67%</span>
+                                    </div>
+                                </div>
+                                <a class="btn position-absolute border-0 text-uppercase fw-500 ">Add To Cart</a>
+                            </div>
+                            <div class="card-body position-relative p-0 mt-3">
+                                <p class="item-category text-secondary  mb-1">Dresses</p>
+                                <h6 class="card-title mb-0 fw-normal">
+                                    <a href="./product1_simple.html">Kirby T-Shirt</a>
+                                    <div class="product-card__price d-flex">
+                                        <span class="money price">$17</span>
+                                    </div>
+                                    <div class="product-card__review d-flex align-items-center">
+                                        <div class="reviews-group d-flex">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor"
+                                                 class="bi bi-star-fill me-1" viewBox="0 0 16 16">
+                                                <path class="text-warning"
+                                                      d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                                            </svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor"
+                                                 class="bi bi-star-fill me-1" viewBox="0 0 16 16">
+                                                <path class="text-warning"
+                                                      d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                                            </svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor"
+                                                 class="bi bi-star-fill me-1" viewBox="0 0 16 16">
+                                                <path class="text-warning"
+                                                      d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                                            </svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor"
+                                                 class="bi bi-star-half me-1" viewBox="0 0 16 16">
+                                                <path class="text-warning"
+                                                      d="M5.354 5.119 7.538.792A.52.52 0 0 1 8 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.54.54 0 0 1 16 6.32a.55.55 0 0 1-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.5.5 0 0 1-.146.05c-.342.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 0 1-.172-.403.6.6 0 0 1 .085-.302.51.51 0 0 1 .37-.245zM8 12.027a.5.5 0 0 1 .232.056l3.686 1.894-.694-3.957a.56.56 0 0 1 .162-.505l2.907-2.77-4.052-.576a.53.53 0 0 1-.393-.288L8.001 2.223 8 2.226z" />
+                                            </svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor"
+                                                 class="bi bi-star me-1" viewBox="0 0 16 16">
+                                                <path class="text-warning"
+                                                      d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.56.56 0 0 0-.163-.505L1.71 6.745l4.052-.576a.53.53 0 0 0 .393-.288L8 2.223l1.847 3.658a.53.53 0 0 0 .393.288l4.052.575-2.906 2.77a.56.56 0 0 0-.163.506l.694 3.957-3.686-1.894a.5.5 0 0 0-.461 0z" />
+                                            </svg>
+                                        </div>
+                                        <span class="reviews-note text-secondary ms-1 ">8k+ reviews</span>
+                                        <div class="d-flex align-items-center mt-1 ms-auto">
+                                            <a href="#" class="swatch-color pc__swatch-color"
+                                               style="color: #222222 !important"></a>
+                                            <a href="#" class="swatch-color swatch_active pc__swatch-color"
+                                               style="color: #b9a16b !important"></a>
+                                            <a href="#" class="swatch-color pc__swatch-color"
+                                               style="color: #f5e6e0 !important"></a>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="position-absolute top-0 end-0 px-2 lh-1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                             class="bi bi-heart" viewBox="0 0 16 16">
+                                            <path class="text-secondary"
+                                                  d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
+                                        </svg>
+                                    </a>
+
+                                    <!-- <a class="add-to-card" href="#"></a> -->
+                            </div>
+                        </div>
+
+                        <div class="product-card-wrapper">
+                            <div class="product-card mb-3 mb-md-4 mb-xxl-5">
+                                <div class="pc__img-wrapper">
+                                    <img src="https://uomo-html.flexkitux.com/images/products/product_5.jpg"
+                                         class="card-img-top  rounded-0" width="330" height="400" alt="...">
+                                    <button class="btn-remove-from-wishlist">
+                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <use href="#icon_close"></use>
+                                        </svg>
+                                    </button>
+                                </div>
+
+                                <div class="pc__info position-relative">
+                                    <p class="pc__category">Dresses</p>
+                                    <h6 class="pc__title">Calvin Shorts</h6>
+                                    <div class="product-card__price d-flex">
+                                        <span class="money price">$62</span>
+                                    </div>
+
+                                    <button class="pc__btn-wl position-absolute top-0 end-0 bg-transparent border-0 js-add-wishlist"
+                                            title="Add To Wishlist">
+                                        <svg width="16" height="16" viewBox="0 0 20 20" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <use href="#icon_heart"></use>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- /.products-grid row -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

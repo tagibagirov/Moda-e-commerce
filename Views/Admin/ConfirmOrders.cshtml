@@ -1,0 +1,49 @@
+﻿@model List<Cargo>
+@{
+    var filtrId = !string.IsNullOrEmpty(Context.Request.Query["filtrId"]) ? int.Parse(Context.Request.Query["filtrId"]) : 0;
+}
+
+<section style="padding-top: 80px;">
+    <div class="my-account container mt-4 pt-4 mb-5 pb-5">
+        <h2 class="page-title">ORDERS</h2>
+        <div class="row">
+            <div class="col-lg-3">
+                @await Html.PartialAsync("_accountMenu")
+            </div>
+            <div class="col-lg-9">
+                <a href="@Url.Action("confirmOrders", new{filtrId = 0})" class="btn btn-primary orderFilter me-4 @(filtrId == 0 ? "orderFilterActive" : "")"> All</a>
+                <a href="@Url.Action("confirmOrders", new{filtrId = 1})" class="btn btn-primary orderFilter me-4 @(filtrId == 1 ? "orderFilterActive" : "")">Awaiting confirmation</a>
+                <a href="@Url.Action("confirmOrders", new{filtrId = 2})" class="btn btn-primary orderFilter me-4 @(filtrId == 2 ? "orderFilterActive" : "")">On the way</a>
+                <a href="@Url.Action("confirmOrders", new{filtrId = 3})" class="btn btn-primary orderFilter me-4 @(filtrId == 3 ? "orderFilterActive" : "")">Arrived</a>
+                <div class="page-content my-account__orders-list pt-3">
+                    <table class="orders-table">
+                        <thead>
+                            <tr>
+                                <th>Order</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Total</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (Cargo item in Model)
+                            {
+                                <tr>
+                                    <td>#@item.CargoId</td>
+                                    <td>@item.CargoTime</td>
+                                    <td>
+                                        <select class="form-control orderLevel" cargoId="@item.CargoId" asp-for="@item.CargoLevelId" asp-items="ViewBag.Levels">
+                                        </select>
+                                    </td>
+                                    <td>$@item.CargoPrice for 3 items</td>
+                                    <td><button class="btn btn-primary">VIEW</button></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

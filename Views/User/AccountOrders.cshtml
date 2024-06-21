@@ -1,0 +1,41 @@
+﻿@model List<Cargo>
+
+
+<section style="padding-top: 80px;">
+    <div class="my-account container mt-4 pt-4 mb-5 pb-5">
+        <h2 class="page-title">ORDERS</h2>
+        <div class="row">
+            <div class="col-lg-3">
+                @await Html.PartialAsync("_accountMenu")
+
+            </div>
+            <div class="col-lg-9">
+                <div class="page-content my-account__orders-list">
+                    <table class="orders-table">
+                        <thead>
+                            <tr>
+                                <th>Order</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Total</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>#@item.CargoId</td>
+                                    <td>@item.CargoTime</td>
+                                    <td>@item.CargoLevel.LevelName</td>
+                                    <td>$@item.CargoPrice for 3 items</td>
+                                    <td><button class="btn btn-primary">VIEW</button></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

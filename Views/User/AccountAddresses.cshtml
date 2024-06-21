@@ -1,0 +1,91 @@
+﻿@model Address
+@{
+    var addressCoutn = 0;
+    var user = ViewBag.User as User;
+
+}
+
+<section style="padding-top: 80px;">
+    <div class="my-account container mt-4 pt-4 mb-5 pb-5">
+        <h2 class="page-title">ORDERS</h2>
+        <div class="row">
+            <div class="col-lg-3">
+                @await Html.PartialAsync("_accountMenu")
+            </div>
+            <div class="col-lg-9">
+                <div class="page-content my-account__address">
+                    <p class="notice mb-4">The following addresses will be used on the checkout page by default.</p>
+                    <div class="my-account__address-list">
+                        @foreach (Address item in ViewBag.AddressesList)
+                        {
+                            <div class="my-account__address-item">
+                                <div class="my-account__address-item__title">
+                                    <h5>Address @(addressCoutn++)</h5>
+                                    <a href="user/EditAddress/@item.AddressId">Edit</a>
+                                </div>
+                                <div class="my-account__address-item__detail">
+                                    <p>@user.UserName @user.UserSurname</p>
+                                    <p>@item.AddressCity, @item.AddressDistrict, @item.AddressStreet, @item.AddressHouse, @item.AddressApartment</p>
+                                    <p>@item.AddressCountry</p>
+                                    <br>
+                                    <p>@user.UserNickname</p>
+                                    <p>@user.UserEmail</p>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <button class="btn btn-primary showAddAddress">Add address</button>
+                </div>
+                <form asp-controller="user" asp-action="AddAddress" method="post" class="addAddressForm d-none page-content">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-floating my-3">
+                                <input asp-for="AddressCountry" class="form-control" id="account_Country"
+                                       placeholder="Country">
+                                <label for="account_Country">Country</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating my-3">
+                                <input asp-for="AddressCity" class="form-control" id="account_City"
+                                       placeholder="City">
+                                <label for="account_City">City</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating my-3">
+                                <input asp-for="AddressDistrict" class="form-control" id="account_District"
+                                       placeholder="District">
+                                <label for="account_District">District</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating my-3">
+                                <input asp-for="AddressStreet" class="form-control" id="account_Street"
+                                       placeholder="Street">
+                                <label for="account_Street">Street</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating my-3">
+                                <input asp-for="AddressHouse" class="form-control" id="account_House"
+                                       placeholder="House">
+                                <label for="account_House">House</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating my-3">
+                                <input asp-for="AddressApartment" class="form-control" id="account_Apartment"
+                                       placeholder="Apartment">
+                                <label for="account_Apartment">Apartment</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="my-3">
+                        <button class="btn btn-primary px-4">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

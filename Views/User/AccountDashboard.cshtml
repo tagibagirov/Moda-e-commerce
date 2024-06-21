@@ -1,0 +1,27 @@
+﻿@model User
+
+
+<section style="padding-top: 80px;">
+    <div class="my-account container mt-4 pt-4 pb-5 mb-5">
+        <h2 class="page-title">My Account</h2>
+        <div class="row">
+            <div class="col-lg-3">
+                @await Html.PartialAsync("_accountMenu")
+            </div>
+            <div class="col-lg-9">
+                <div class="page-content my-account__dashboard">
+                    <p>
+                        Hello <strong>@Model.UserNickname</strong> (not <strong>@Model.UserNickname?</strong> <a href="/user/logout">Log out</a>)
+                    </p>
+                    <p>
+                        From your account dashboard you can view your <a class="unerline-link" href="/user/AccountOrders">recent orders</a>, manage your <a class="unerline-link"
+                                                                                                                                                            href="/user/accountAddresses">shipping and billing addresses</a>, and <a class="unerline-link" href="/user/accountedit">
+                            edit your password and account
+                            details.
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

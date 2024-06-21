@@ -1,0 +1,58 @@
+﻿@model Product
+
+<section style="padding-top: 80px;">
+    <div class="add-product container pt-4 mt-4 pb-5 mb-5">
+        <h2 class="page-title">Admin</h2>
+        <div class="row">
+            <div class="col-lg-3">
+                @await Html.PartialAsync("_accountMenu")
+
+            </div>
+            <div class="col-lg-9">
+                <div class="page-content">
+                    <form action="Admin/EditProduct/@Model.ProductId" method="post">
+                        <div class="row">
+                            <div class="col-lg-6 mb-3">
+                                <label class="mb-2" for="ProductName">Name</label>
+                                <input asp-for="ProductName" class="form-control rounded-0" placeholder="Name">
+                            </div>
+                            <div class="col-lg-6 mb-3">
+                                <label class="mb-2" for="ProductPrice">Price</label>
+                                <input asp-for="ProductPrice" class="form-control rounded-0" placeholder="Price">
+                            </div>
+                            <div class="col-lg-6 mb-3">
+                                <label class="mb-2" for="ProductYear">Year</label>
+                                <input asp-for="ProductYear" class="form-control rounded-0" placeholder="Year">
+                            </div>
+                            <div class="col-lg-6 mb-3">
+                                <label class="mb-2" for="ProductPhoto">Photo</label>
+                                <input asp-for="ProductPhoto" class="form-control rounded-0" placeholder="Photo">
+                            </div>
+                            <div class="col-lg-6 mb-3">
+                                <label class="mb-2" for="ProductWeight">Weight</label>
+                                <input asp-for="ProductWeight" class="form-control rounded-0" placeholder="Weight">
+                            </div>
+                            <div class="col-lg-6 mb-3">
+                                <label class="mb-2" for="ProductColor">Color</label>
+                                <input asp-for="ProductColor" class="form-control rounded-0" placeholder="Color">
+                            </div>
+                            <div class="col-lg-6 mb-3">
+                                <label class="mb-2" for="ProductCountry">Country</label>
+                                <input asp-for="ProductCountry" class="form-control rounded-0" placeholder="Country">
+                            </div>
+                            <div class="col-lg-6 mb-3">
+                                <label class="mb-2" for="ProductSize">Size</label>
+                                <input asp-for="ProductSize" class="form-control rounded-0" placeholder="Size">
+                            </div>
+                            <div class="col-lg-12 mb-3">
+                                <label class="mb-2" for="ProductAbout">About</label>
+                                <textarea asp-for="ProductAbout" rows="4" cols="50" class="form-control rounded-0" placeholder="About"></textarea>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

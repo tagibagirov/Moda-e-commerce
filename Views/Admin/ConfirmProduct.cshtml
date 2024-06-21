@@ -1,0 +1,55 @@
+﻿@model List<Product>
+
+<section style="padding-top: 80px;">
+    <div class="users-list container pt-4 mt-4 pb-5 mb-5">
+        <h2 class="page-title">Admin</h2>
+        <div class="row">
+            <div class="col-lg-3">
+                @await Html.PartialAsync("_accountMenu")
+
+            </div>
+            <div class="col-lg-9">
+                <div class="page-content row row-cols-3">
+                    @foreach (Product item in Model)
+                    {
+                        <div class="card border-0 mb-3 mb-md-4 mb-xxl-5 text-start">
+                            <div class="card-img position-relative">
+                                <a href="/home/productDescription/@item.ProductId">
+                                    <img src="@item.ProductPhoto"
+                                         class="card-img-top  rounded-0" width="330" height="400" alt="...">
+                                </a>
+                                <div class="position-absolute top-0 start-0 w-100 d-flex justify-content-between"
+                                     style="padding: 10px;">
+                                    <div class="">
+                                        <span class="d-block bg-white py-1 px-2">NEW</span>
+                                    </div>
+                                    <div class=" ms-auto">
+                                        <span class="d-block bg-danger text-white py-1 px-2">-67%</span>
+                                    </div>
+                                </div>
+                                <button class="btn position-absolute border-0 text-uppercase fw-500 text-white confirm bg-success">Confirm</button>
+                                <button class="btn position-absolute border-0 text-uppercase fw-500 bg-danger text-white">Reject</button>
+                            </div>
+                            <div class="card-body position-relative p-0 mt-3">
+                                <p class="item-category text-secondary  mb-1">@item.ProductCategory.CategoryName</p>
+                                <h6 class="card-title mb-0 fw-normal">
+                                    <a href="./product1_simple.html">@item.ProductName</a>
+                                </h6>
+                                <div class="product-card__price d-flex">
+                                    <span class="money price">$@item.ProductPrice</span>
+                                </div>
+                                <a href="#" class="position-absolute top-0 end-0 px-2 lh-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                         fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                                        <path class="text-secondary"
+                                              d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

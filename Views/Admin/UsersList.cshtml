@@ -1,0 +1,52 @@
+﻿@model List<User>
+@{
+    var id = 0;
+}
+
+<section style="padding-top: 80px;">
+    <div class="users-list container pt-4 mt-4 pb-5 mb-5">
+        <h2 class="page-title">Admin</h2>
+        <div class="row">
+            <div class="col-lg-3">
+                @await Html.PartialAsync("_accountMenu")
+            </div>
+            <div class="col-lg-9">
+                <div class="page-content">
+                    <table class="users-table">
+                        <thead>
+                            <tr>
+                                <th>User Id</th>
+                                <th>User Fullname</th>
+                                <th>Nickname</th>
+                                <th>User Email</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (User item in Model)
+                            {
+                                <tr uId="@item.UserId">
+                                    <td>#@(++id)</td>
+                                    <td>@item.UserName @item.UserSurname</td>
+                                    <td>@item.UserNickname</td>
+                                    <td>@item.UserEmail</td>
+                                    <td class="position-relative">
+                                        @if (item.UserStatus == "block")
+                                        {
+                                            <button class="btn px-3 changeUserStat btn-success">UNBLOCK</button>
+                                        }
+                                        else
+                                        {
+                                            <button class="btn px-3 changeUserStat btn-primary">BLOCK</button>
+                                        }
+                                        <button class="btn btn-primary bg-danger border-danger btn-delete">DELETE</button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

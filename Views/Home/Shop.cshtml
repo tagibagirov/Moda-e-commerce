@@ -1,0 +1,266 @@
+﻿@model List<Product>
+
+@{
+    var sort = !string.IsNullOrEmpty(Context.Request.Query["sort"]) ? int.Parse(Context.Request.Query["sort"]) : 0;
+}
+
+<section class="shop-main container pb-5 mb-5" style="padding-top: 80px;">
+
+    <div class="d-flex justify-content-between pt-5 mb-4 pb-md-2">
+        <div class="mb-0 d-none d-md-block flex-grow-1">
+            <a href="#" class="text-uppercase  fw-500 py-2">Home</a>
+            <span class="fw-500  px-1 py-2">/</span>
+            <a href="#" class="text-uppercase  fw-500 py-2">The Shop</a>
+        </div><!-- /.breadcrumb -->
+        <div class="d-flex align-items-center justify-content-between justify-content-md-end flex-grow-1">
+            <div class=" select-box text-uppercase border-0 py-0 order-1 order-md-0 ">
+                <div class="selected fw-500 text-end pe-3">Default Sorting</div>
+                <ul class="options-list">
+                    <li class="option"><a href="@Url.Action("Shop", new{sort = 0})">Default Sorting</a></li>
+                    @* <li class="option"><a href="@Url.Action("Shop", new{sort = 1})">Best selling</a></li> *@
+                    <li class="option"><a href="@Url.Action("Shop", new{sort = 2})">Alphabetically, A-Z</a></li>
+                    <li class="option"><a href="@Url.Action("Shop", new{sort = 3})">Alphabetically, Z-A</a></li>
+                    <li class="option"><a href="@Url.Action("Shop", new{sort = 4})">Price, low to high</a></li>
+                    <li class="option"><a href="@Url.Action("Shop", new{sort = 5})">Price, high to low</a></li>
+                    @* <li class="option">Date, old to new</li>
+                    <li class="option">Date, new to old</li> *@
+                </ul>
+            </div>
+            <div class="shop-asc__seprator mx-3 d-none d-md-block order-md-0"></div>
+
+            <div class="align-items-center order-1 d-none d-lg-flex">
+                <span class="text-uppercase fw-500 me-2">View</span>
+                <button class="btn btn-link p-0 fw-500 me-2 cols-size">2</button>
+                <button class="btn btn-link p-0 fw-500 me-2 cols-size">3</button>
+                <button class="btn btn-link p-0 fw-500 cols-size">4</button>
+            </div><!-- /.col-size -->
+
+            <div class="shop-asc__seprator mx-3 d-none d-lg-block order-md-1">
+            </div>
+
+            <div class="shop-filter d-flex align-items-center order-0 order-md-3">
+                <button class="btn btn-link p-0 d-flex align-items-center ps-0 js-open-aside">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                         class="bi bi-filter me-2" viewBox="0 0 16 16">
+                        <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5m-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5" />
+                    </svg>
+                    <span class="text-uppercase fw-500 d-inline-block align-middle">Filter</span>
+                </button>
+            </div><!-- /.col-size d-flex align-items-center ms-auto ms-md-3 -->
+        </div><!-- /.shop-acs -->
+    </div><!-- /.d-flex justify-content-between -->
+    <div class="products-grid row row-cols-2 row-cols-md-3 row-cols-lg-4" id="products-grid">
+        @foreach (var item in Model)
+        {
+            @await Html.PartialAsync("_card", item)
+        }
+    </div>
+    <div class="w-100">
+        <p class="mb-1 text-center fw-500">SHOWING 36 of 497 items</p>
+        <div class="progress rounded progress_uomo mb-3 m-auto">
+            <div class="progress-bar rounded dark" style="width: 39%;"></div>
+        </div>
+
+        <div class="text-center">
+            <a class="btn-link btn-link_lg text-uppercase fw-500" href="#">Show More</a>
+        </div>
+    </div>
+
+</section>
+<div class="page-overlay d-none position-absolute top-0 start-0 w-100">
+    <div class="close-aside-div"></div>
+    <div class="aside-filters  position-fixed top-0 end-0 bg-white" id="shopFilter">
+        <div class="aside-header d-flex align-items-center">
+            <h3 class="text-uppercase fs-6 mb-0">Filter By</h3>
+            <button class="btn btn-link d-flex align-items-center border-0 p-0 ms-auto aside-hide-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                     fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                    <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
+                </svg>
+            </button>
+        </div><!-- /.aside-header -->
+        <div class="aside-content">
+            <div class="accordion mb-4">
+                <h5 class="accordion-header" id="accordion-heading-1">
+                    <button class="accordion-button p-0 fs-5 text-uppercase" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#accordion-filter-1" aria-expanded="true"
+                            aria-controls="accordion-filter-1">
+                        Product Categories
+                    </button>
+                </h5>
+                <div id="accordion-filter-1" class="accordion-collapse collapse show border-0"
+                     aria-labelledby="accordion-heading-1" data-bs-parent="#categories-list">
+                    <div class="accordion-body px-0 pb-0 pt-4">
+                        <ul class="list list-inline row row-cols-2 mb-0">
+                            @foreach (Category item in ViewBag.Categories)
+                            {
+                                <li class="list-item py-1">
+                                    <span class="menu-link p-0 filter-cat" catId="@item.CategoryId">@item.CategoryName</span>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion" id="color-filters">
+                <div class=" mb-4">
+                    <h5 class="accordion-header" id="accordion-heading-11">
+                        <button class="accordion-button p-0 border-0 fs-5 text-uppercase" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#accordion-filter-2" aria-expanded="true"
+                                aria-controls="accordion-filter-2">
+                            Color
+                        </button>
+                    </h5>
+                    <div id="accordion-filter-2" class="accordion-collapse collapse show border-0"
+                         aria-labelledby="accordion-heading-11" data-bs-parent="#color-filters">
+                        <div class="accordion-body px-0 pb-0 pt-4">
+                            <div class="d-flex flex-wrap">
+                                @foreach (Color item in ViewBag.Colors)
+                                {
+                                    <span class="swatch-color js-filter-color" colorId="@item.ColorId" style="color: @item.ColorHexCode !important"></span>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.accordion -->
+            <div class="accordion" id="size-filters">
+                <div class=" mb-4">
+                    <h5 class="accordion-header" id="accordion-heading-size">
+                        <button class="accordion-button p-0 border-0 fs-5 text-uppercase" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#accordion-filter-size" aria-expanded="true"
+                                aria-controls="accordion-filter-size">
+                            Sizes
+
+                        </button>
+                    </h5>
+                    <div id="accordion-filter-size" class="accordion-collapse collapse show border-0"
+                         aria-labelledby="accordion-heading-size" data-bs-parent="#size-filters">
+                        <div class="accordion-body px-0 pb-0 pt-4">
+                            <div class="d-flex flex-wrap">
+                                <span class="swatch-size rounded-0 btn  mb-3 me-3 js-filter-size">XS</span>
+                                <span class="swatch-size rounded-0 btn mb-3 me-3 js-filter-size">S</span>
+                                <span class="swatch-size rounded-0 btn mb-3 me-3 js-filter-size">M</span>
+                                <span class="swatch-size rounded-0 btn mb-3 me-3 js-filter-size">L</span>
+                                <span class="swatch-size rounded-0 btn mb-3 me-3 js-filter-size">XL</span>
+                                <span class="swatch-size rounded-0 btn mb-3 me-3 js-filter-size">XXL</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.accordion -->
+            <div class="accordion" id="brand-filters">
+                <div class=" mb-4">
+                    <h5 class="accordion-header" id="accordion-heading-brand">
+                        <button class="accordion-button p-0 border-0 fs-5 text-uppercase" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#accordion-filter-brand" aria-expanded="true" aria-controls="accordion-filter-brand">
+                            Brands
+                        </button>
+                    </h5>
+                    <div id="accordion-filter-brand" class="accordion-collapse collapse show border-0"
+                         aria-labelledby="accordion-heading-brand" data-bs-parent="#brand-filters">
+                        <div class="search-field multi-select accordion-body px-0 pb-0 pt-4">
+                            <div class="search-field__input-wrapper mb-3 position-relative">
+                                <input type="text" name="search_text" class="search-field__input form-control form-control-sm rounded-0 js-search-category" placeholder="SEARCH">
+                            </div>
+                            <ul class="multi-select__list list-unstyled category-list">
+                                @foreach (Brand item in ViewBag.Brands)
+                                {
+                                    <li class="multi-select__item py-2 position-relative js-filter-brand" brandId ="@item.BrandId">
+                                        <span class="me-auto">@item.BrandName</span>
+                                        <span class="text-secondary">2</span>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.accordion -->
+            <div class="accordion" id="price-filters">
+                <div class=" mb-4">
+                    <h5 class="accordion-header mb-2" id="accordion-heading-price">
+                        <button class="accordion-button p-0 border-0 fs-5 text-uppercase" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#accordion-filter-price" aria-expanded="true"
+                                aria-controls="accordion-filter-price">
+                            Price
+
+                        </button>
+                    </h5>
+                    <div id="accordion-filter-price" class="accordion-collapse collapse show border-0"
+                         aria-labelledby="accordion-heading-price" data-bs-parent="#price-filters">
+                        <div class="slider slider-horizontal" id="">
+                            <div class="slider-track">
+                                <div class="slider-track-low" style="left: 0px; width: 24.2424%;"></div>
+                                <div class="slider-selection" style="left: 24.2424% !important; width: 20.202% !important;"></div>
+                                <div class="slider-track-high" style="right: 0px; width: 55.5556%;"></div>
+                            </div>
+                            <div class="tooltip tooltip-main bs-tooltip-top" role="presentation"
+                                 style="left: 34.3434%;">
+                                <div class="arrow"></div>
+                                <div class="tooltip-inner">$250,450</div>
+                            </div>
+                            <div class="tooltip tooltip-min bs-tooltip-top" role="presentation"
+                                 style="left: 24.2424%;">
+                                <div class="arrow"></div>
+                                <div class="tooltip-inner">$250</div>
+                            </div>
+                            <div class="tooltip tooltip-max bs-tooltip-bottom" role="presentation"
+                                 style="left: 44.4444%; top: 18px;">
+                                <div class="arrow"></div>
+                                <div class="tooltip-inner">$450</div>
+                            </div>
+                            <div class="slider-handle min-slider-handle round" role="slider" aria-valuemin="10"
+                                 aria-valuemax="1000" aria-valuenow="250" aria-valuetext="$250" tabindex="0"
+                                 style="left: 24.2424%;"></div>
+                            <div class="slider-handle max-slider-handle round" role="slider" aria-valuemin="10"
+                                 aria-valuemax="1000" aria-valuenow="450" aria-valuetext="$450" tabindex="0"
+                                 style="left: 44.4444%;"></div>
+                        </div><input class="price-range-slider" type="text" name="price_range" value="250,450"
+                                     data-slider-min="10" data-slider-max="1000" data-slider-step="5"
+                                     data-slider-value="[250,450]" data-currency="$" data-value="250,450"
+                                     style="display: none;">
+                        <div class="price-range__info d-flex align-items-center mt-2">
+                            <div class="me-auto">
+                                <span class="text-secondary">Min Price: </span>
+                                <span class="price-range__min">$250</span>
+                            </div>
+                            <div>
+                                <span class="text-secondary">Max Price: </span>
+                                <span class="price-range__max">$450</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.accordion -->
+            <div class="filter-active-tags pt-2">
+                <button class="btn rounded-0 py-1 px-3 btn d-inline-flex align-items-center rounded-0 py-1 px-3 mb-3 me-3 text-uppercase js-filter">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                    </svg>
+                    <span class="ms-2">Blues</span>
+                </button>
+                <button class="btn rounded-0 py-1 px-3 d-inline-flex align-items-center mb-3 me-3 text-uppercase js-filter">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                    </svg>
+                    <span class="ms-2">Max Price: $493</span>
+                </button>
+                <button class="btn rounded-0 py-1 px-3 d-inline-flex align-items-center mb-3 text-uppercase js-filter">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                    </svg>
+                    <span class="ms-2">Zara</span>
+                </button>
+
+                <div>
+                    <button class="btn rounded-0 py-1 px-3 d-flex align-items-center text-uppercase js-filter">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                        </svg>
+                        <span class="ms-2">RESET FILTER</span>
+                    </button>
+                </div>
+            </div>
+        </div><!-- /.aside-content -->
+    </div>
+</div>
