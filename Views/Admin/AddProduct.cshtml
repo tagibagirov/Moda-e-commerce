@@ -9,42 +9,85 @@
             </div>
             <div class="col-lg-9">
                 <div class="page-content">
-                    <form asp-controller="Admin" asp-action="AddProduct" method="post">
+                    <form asp-controller="Admin" class="needs-validation" asp-action="AddProduct" method="post">
                         <div class="row">
                             <div class="col-lg-6 mb-3">
-                                <label class="mb-2" for="ProductName">Name</label>
-                                <input asp-for="ProductName" class="form-control rounded-0" placeholder="Name">
+                                <div class="form-floating my-3">
+                                    <input asp-for="ProductName" class="form-control rounded-0" placeholder="Name">
+                                    <label for="ProductName">Name</label>
+                                </div>
                             </div>
                             <div class="col-lg-6 mb-3">
-                                <label class="mb-2" for="ProductPrice">Price</label>
-                                <input asp-for="ProductPrice" class="form-control rounded-0" placeholder="Price">
+                                <div class="form-floating my-3">
+                                    <input asp-for="ProductPrice" class="form-control rounded-0" placeholder="Price">
+                                    <label for="ProductPrice">Price</label>
+                                </div>
                             </div>
                             <div class="col-lg-6 mb-3">
-                                <label class="mb-2" for="ProductYear">Year</label>
-                                <input asp-for="ProductYear" class="form-control rounded-0" placeholder="Year">
+                                <div class="form-floating my-3">
+                                    <input asp-for="ProductYear" class="form-control rounded-0" placeholder="Year">
+                                    <label for="ProductYear">Year</label>
+                                </div>
                             </div>
                             <div class="col-lg-6 mb-3">
-                                <label class="mb-2" for="ProductPhoto">Photo</label>
-                                <input asp-for="ProductPhoto" class="form-control rounded-0" placeholder="Photo">
+                                <div class="form-floating my-3">
+                                    <input asp-for="ProductPhoto" class="form-control rounded-0" placeholder="Photo">
+                                    <label for="ProductPhoto">Photo</label>
+                                </div>
                             </div>
                             <div class="col-lg-6 mb-3">
-                                <label class="mb-2" for="ProductWeight">Weight</label>
-                                <input asp-for="ProductWeight" class="form-control rounded-0" placeholder="Weight">
+                                <div class="form-floating my-3">
+                                    <input asp-for="ProductWeight" class="form-control rounded-0" placeholder="Weight">
+                                    <label for="ProductWeight">Weight</label>
+                                </div>
                             </div>
                             <div class="col-lg-6 mb-3">
-                                <label class="mb-2" for="ProductColor">Color</label>
-                                <input asp-for="ProductColor" class="form-control rounded-0" placeholder="Color">
+                                <div class="form-floating my-3 d-flex flex-wrap align-items-center position-relative">
+                                    <input asp-for="ProductWeight" class="form-control rounded-0 colorInput" placeholder="Weight">
+                                    <label  for="ProductColor" class="colorLabel">Color</label>
+                                    <div class="selectColor">
+                                        <span class="swatch-color js-filter-color" colorid="1" style="color: #f5e0cc !important"></span>
+                                        <span class="swatch-color js-filter-color" colorid="2" style="color: #000 !important"></span>
+                                        <span class="swatch-color js-filter-color" colorid="3" style="color: #71b2ff !important"></span>
+                                        <span class="swatch-color js-filter-color" colorid="4" style="color: #8b572a !important"></span>
+                                        <span class="swatch-color js-filter-color" colorid="5" style="color: #a52c36 !important"></span>
+                                        <span class="swatch-color js-filter-color" colorid="6" style="color: #1f3897 !important"></span>
+                                        <span class="swatch-color js-filter-color" colorid="7" style="color: #ede9de !important"></span>
+                                        <span class="swatch-color js-filter-color" colorid="8" style="color: #ddd !important"></span>
+                                        <span class="swatch-color js-filter-color" colorid="9" style="color: #7ed321 !important"></span>
+                                        <span class="swatch-color js-filter-color" colorid="10" style="color: #8b9955 !important"></span>
+                                        <span class="swatch-color js-filter-color" colorid="11" style="color: #f5a623 !important"></span>
+                                        <span class="swatch-color js-filter-color" colorid="12" style="color: #ffa8e7 !important"></span>
+                                        <span class="swatch-color js-filter-color" colorid="13" style="color: #8331cc !important"></span>
+                                        <span class="swatch-color js-filter-color" colorid="14" style="color: #de001b !important"></span>
+                                        <span class="swatch-color js-filter-color" colorid="15" style="color: #fff !important"></span>
+                                        <span class="swatch-color js-filter-color" colorid="16" style="color: #ffe500 !important"></span>
+                                        <span class="swatch-color js-filter-color" colorid="17" style="color: #46c49e !important"></span>
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-lg-6 mb-3">
-                                <label class="mb-2" for="ProductCountry">Country</label>
-                                <input asp-for="ProductCountry" class="form-control rounded-0" placeholder="Country">
+                                <div class="form-floating my-3">
+                                    <input asp-for="ProductCountry" class="form-control rounded-0" placeholder="Country">
+                                    <label for="ProductCountry">Country</label>
+                                </div>
                             </div>
                             <div class="col-lg-6 mb-3">
-                                <label class="mb-2" for="ProductSize">Size</label>
-                                <input asp-for="ProductSize" class="form-control rounded-0" placeholder="Size">
+                                <div class="my-3">
+                                    @* <label  for="ProductSize">Size</label> *@
+                                    <div class="d-flex flex-wrap align-items-center py-2">
+                                        <span class="me-auto">Size:</span>
+                                        <span class="swatch-size rounded-0 btn me-3 js-filter-size">XS</span>
+                                        <span class="swatch-size rounded-0 btn me-3 js-filter-size">S</span>
+                                        <span class="swatch-size rounded-0 btn me-3 js-filter-size">M</span>
+                                        <span class="swatch-size rounded-0 btn me-3 js-filter-size">L</span>
+                                        <span class="swatch-size rounded-0 btn me-3 js-filter-size">XL</span>
+                                        <span class="swatch-size rounded-0 btn js-filter-size">XXL</span>
+                                    </div>
+                                    @* <input asp-for="ProductSize" class="form-control rounded-0" placeholder="Size"> *@
+                                </div>
                             </div>
                             <div class="col-lg-12 mb-3">
-                                <label class="mb-2" for="ProductAbout">About</label>
                                 <textarea asp-for="ProductAbout" rows="4" cols="50" class="form-control rounded-0" placeholder="About"></textarea>
                             </div>
                         </div>

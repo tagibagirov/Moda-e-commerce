@@ -42,11 +42,11 @@ var swiper = new Swiper(".shop-main .products-carousel .mySwiper", {
     },
 });
 
-$('.aside-filters .swatch-size').click(function () {
+$('.swatch-size').click(function () {
     $(this).toggleClass("swatch-size_active")
 })
 
-$('.aside-filters .multi-select__item').click(function () {
+$('.multi-select__item').click(function () {
     $(this).toggleClass("mult-select__item_selected")
 })
 $('.js-open-aside').click(function () {
@@ -118,15 +118,15 @@ $('.addToBasket').click(function () {
 //filter
 function filter() {
     var _colorList = new Array();
-    $('.swatch-color_active').each(function () {
+    $('.aside-filters .swatch-color_active').each(function () {
         _colorList.push(parseInt($(this).attr("colorId")));
     })
     var _brandList = new Array();
-    $('.mult-select__item_selected').each(function () {
+    $('.aside-filters .mult-select__item_selected').each(function () {
         _brandList.push(parseInt($(this).attr("brandId")));
     })
     var _sizeList = new Array();
-    $('.swatch-size_active').each(function () {
+    $('.aside-filters .swatch-size_active').each(function () {
         _sizeList.push($(this).text());
     })
     $.get("/home/Filter/", { cat: parseInt($(".selected-cat").attr("catId")), colorList: JSON.stringify(_colorList), sizeList: JSON.stringify(_sizeList), brandList: JSON.stringify(_brandList) }, (res) => {
@@ -197,31 +197,31 @@ function generateStars(rating) {
     }
     return starsHtml;
 }
-$(".filter-cat").click(function () {
-    $(".filter-cat").removeClass("selected-cat")
+$(".aside-filters .filter-cat").click(function () {
+    $(".aside-filters .filter-cat").removeClass("selected-cat")
     $(this).addClass("selected-cat")
     filter()
 })
-$('.js-filter-color').click(function () {
+$('.aside-filters .js-filter-color').click(function () {
     $(this).toggleClass("swatch-color_active")
     filter()
 })
-$('.js-filter-size').click(function () {
+$('.aside-filters .js-filter-size').click(function () {
     $(this).toggleClass("swatch-size_active")
     filter()
 })
-$('.js-filter-brand').click(function () {
+$('.aside-filters .js-filter-brand').click(function () {
     $(this).toggleClass("brand-selected")
     filter()
 })
-$(".js-search-category").keyup(function () {
+$(".aside-filters .js-search-category").keyup(function () {
     console.log($(this).val())
     $.get("/home/searchCategory/", { brand: $(this).val() }, (res) => {
-        $(".js-filter-brand").hide()
+        $(".aside-filters .js-filter-brand").hide()
         $(res).each(function (index, _brand) {
             console.log(_brand)
-            $(".js-filter-brand").each(function () {
-                $(".js-filter-brand").css("display", "none !important")
+            $(".aside-filters .js-filter-brand").each(function () {
+                $(".aside-filters .js-filter-brand").css("display", "none !important")
                 if ($(this).attr("brandId") == _brand.brandId) {
                     $(this).show()
                 }

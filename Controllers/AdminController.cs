@@ -63,6 +63,7 @@ namespace ModaECommerce.Controllers
         }
         public IActionResult AddProduct()
         {
+            ViewBag.Colors = _sql.Colors.ToList();
             return View();
         }
         [HttpPost]
@@ -120,7 +121,7 @@ namespace ModaECommerce.Controllers
             {
                 cargoList = cargoList.Where(x => x.CargoLevelId == 6);
             }
-            ViewBag.Levels = new SelectList(_sql.Levels.ToList(), "LevelId", "LevelName"); ;
+            ViewBag.Levels = new SelectList(_sql.Levels.ToList(), "LevelId", "LevelName");
             return View(cargoList.ToList());
         }
     }
