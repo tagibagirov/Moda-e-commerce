@@ -3,6 +3,30 @@
 
 <header>
     <div class="head">
+        <div class="overflow-hidden position-relative h-100">
+            <div class="slideshow-character position-absolute bottom-0 pos_right-center">
+                <img loading="lazy" src="https://uomo-html.flexkitux.com/images/slideshow-character1.png"
+                     width="400" height="690" alt="Woman Fashion 2"
+                     class="slideshow-character__img animate animate_fade animate_btt animate_delay-9 w-auto h-auto">
+                <div class="character_markup type2">
+                    <p class="text-uppercase font-sofia mark-grey-color animate animate_fade animate_btt animate_delay-10 mb-0">
+                        Dresses
+                    </p>
+                </div>
+            </div>
+            <div class="slideshow-text container position-absolute start-50 top-50 translate-middle">
+                <h6 class="text_dash text-uppercase fs-base fw-medium animate animate_fade animate_btt animate_delay-3">
+                    New Arrivals
+                </h6>
+                <h2 class="h1 fw-normal mb-0 animate animate_fade animate_btt animate_delay-5">
+                    Top Selling
+                </h2>
+                <h2 class="h1 fw-bold animate animate_fade animate_btt animate_delay-5">Dresses</h2>
+                <a href="/home/shop" class="btn-link fw-500 btn-link_lg default-underline fw-medium animate animate_fade animate_btt animate_delay-7 position-relative">
+                    Shop Now
+                </a>
+            </div>
+        </div>
     </div>
     @* <section class="category-carousel">
         <div class="container py-5">
@@ -156,7 +180,7 @@
                                 <div class="card bg-transparent border-0">
                                     <div class="card-img">
                                         <a href="/home/productDescription/@item.ProductId">
-                                            <img src="@item.ProductPhoto" class="card-img-top  rounded-0" width="258" height="313" alt="...">
+                                            <img src="/img/productsPhoto/@item.Photos.ToList()[0].PhotoName" class="card-img-top  rounded-0" width="258" height="313" alt="...">
                                         </a>
 
                                     </div>
@@ -193,7 +217,7 @@
 </section>
 <section class="products-grid py-5 mt-5">
     <div class="container text-center">
-        <h2 class="pb-2 mb-4">OUR TRENDY <strong>PRODUCTS</strong></h2>
+        <h2 class="pb-2 mb-4">OUR TRENDY <strong class="fs-2">PRODUCTS</strong></h2>
         <ul class="nav mb-3 text-uppercase justify-content-center border-0">
             <li class="nav-item">
                 <a class="nav-link nav-link_underscore active fw-500" href="#">All</a>

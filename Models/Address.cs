@@ -21,5 +21,7 @@ public partial class Address
 
     public int? AddressUserId { get; set; }
 
+    public string? AddressTitle { get; set; }
+
     public virtual User? AddressUser { get; set; }
 }

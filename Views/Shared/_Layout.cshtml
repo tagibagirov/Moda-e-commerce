@@ -22,7 +22,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link " aria-current="page" href="/home/index">HOME</a>
+                    <a class="nav-link" href="/home/index">HOME</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " href="/home/shop">SHOP</a>
@@ -35,18 +35,44 @@
                 </li>
             </ul>
             <div class="d-flex navbar-nav">
-                <a href="#" class="nav-link me-4 pt-0 pb-1">
+
+                <a href="#" class="nav-link show-search me-4 pt-0 pb-1">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                          class="bi bi-search" viewBox="0 0 16 16">
                         <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
                     </svg>
-                </a>
-                <a href="/user/accountWishlist" class="nav-link me-4 pt-0 pb-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20"
-                         height="20" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-                        <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x-lg" style="display: none" viewBox="0 0 16 16">
+                        <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
                     </svg>
                 </a>
+                <div class="search-popup pt-5 pb-4 js-hidden-content" style="display: none">
+                    <div method="GET" class="search-field container">
+                        <p class="text-uppercase text-secondary fw-500 mb-4">What are you looking for?</p>
+                        <div class="position-relative">
+                            <input class="search-field__input search-popup__input w-100 fw-500 mb-4" type="text" name="search-keyword" placeholder="Search products">
+                            <button class="btn-icon search-popup__submit bg-transparent border-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                                </svg>
+                            </button>
+                            <button class="btn-icon btn-close-lg search-popup__reset bg-transparent border-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                                    <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
+                                </svg>
+                            </button>
+                        </div>
+
+                        <div class="search-popup__results">
+                            <div class="search-result row row-cols-5 "></div>
+                        </div>
+                    </div><!-- /.header-search -->
+                </div><!-- /.search-popup -->
+                @* <a href="/user/accountWishlist" class="nav-link me-4 pt-0 pb-1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20"
+                height="20" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
+                </svg>
+                </a> *@
                 <a href="/basket/ShowBasket" class="nav-link me-4 pt-0 pb-1">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20"
                          height="20" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
@@ -62,7 +88,7 @@
             </div>
         </div>
     </nav>
-            @RenderBody()
+    @RenderBody()
     <footer class="dark pt-5">
         <div class="footer-top container  py-5">
             <div class="text-center w-50 m-auto">

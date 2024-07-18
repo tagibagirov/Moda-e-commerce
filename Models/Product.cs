@@ -11,8 +11,6 @@ public partial class Product
 
     public float? ProductPrice { get; set; }
 
-    public string? ProductPhoto { get; set; }
-
     public string? ProductAbout { get; set; }
 
     public DateOnly? ProductYear { get; set; }
@@ -20,8 +18,6 @@ public partial class Product
     public float? ProductWeight { get; set; }
 
     public string? ProductCountry { get; set; }
-
-    public string? ProductSize { get; set; }
 
     public int? ProductRatings { get; set; }
 
@@ -37,11 +33,13 @@ public partial class Product
 
     public int? ProductColorId { get; set; }
 
+    public string? ProductSize { get; set; }
+
     public virtual ICollection<Baglama> Baglamas { get; set; } = new List<Baglama>();
 
     public virtual ICollection<Basket> Baskets { get; set; } = new List<Basket>();
 
-    public virtual ICollection<Cargo> Cargos { get; set; } = new List<Cargo>();
+    public virtual ICollection<Photo> Photos { get; set; } = new List<Photo>();
 
     public virtual Brand? ProductBrend { get; set; }
 

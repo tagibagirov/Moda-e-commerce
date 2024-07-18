@@ -11,6 +11,12 @@ public partial class Baglama
 
     public int? BaglamaProductId { get; set; }
 
+    public float? BaglamaWeight { get; set; }
+
+    public int? BaglamaProductQuantity { get; set; }
+
+    public int? BaglamaProductSizeId { get; set; }
+
     public virtual Cargo? BaglamaCargo { get; set; }
 
     public virtual Product? BaglamaProduct { get; set; }

@@ -1,0 +1,153 @@
+﻿@model Cargo
+@{
+    ViewData["Title"] = "OrderDetails";
+}
+
+@{
+    float? total = 0;
+}
+
+
+<section style="padding-top: 80px;">
+    <form class="shop-checkout container mt-4 pt-4 mb-5 pb-5" asp-controller="basket" asp-action="showbasket" method="post">
+        <h1>Cargo #@Model.CargoId</h1>
+        <div class="shopping-cart">
+            <div class="cart-table__wrapper">
+                <table class="cart-table">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th></th>
+                            <th>Size</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Subtotal</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (Baglama item in Model.Baglamas)
+                        {
+                            total += item.BaglamaProductQuantity * item.BaglamaProduct.ProductPrice;
+                            <tr basketId="@item.BaglamaId">
+                                <td>
+                                    <div class="shopping-cart__product-item">
+                                        <a href="/home/ProductDescription/@item.BaglamaProductId">
+                                            <img loading="lazy" src="/img/productsPhoto/@item.BaglamaProduct.Photos.FirstOrDefault().PhotoName" width="120"
+                                                 height="120" alt="">
+                                        </a>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="shopping-cart__product-item__detail">
+                                        <h4><a href="/home/ProductDescription/@item.BaglamaProduct">@item.BaglamaProduct.ProductName</a></h4>
+                                        <ul class="shopping-cart__product-item__options">
+                                            <li>Color: @item.BaglamaProduct.ProductColor.ColorName</li>
+                                        </ul>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="position-relative overflow-visible">
+                                        <input id="SizeId" type="hidden" name="SizeId" class="form-control rounded-0">
+                                        
+                                            @foreach (Size size in ViewBag.Sizes)
+                                            {
+                                                if (item.BaglamaProductSizeId == size.SizeId)
+                                                {
+                                                <label for="SizeId" class="baglamaSizeLabel">@size.SizeName</label>
+                                                }
+                                            }
+                                        
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="shopping-cart__product-price">$@item.BaglamaProduct.ProductPrice</span>
+                                </td>
+                                <td>
+                                    <div class="qty-control position-relative qty-initialized">
+                                        <span class="qty-control__number text-center">@item.BaglamaProductQuantity</span>
+                                    </div><!-- .qty-control -->
+                                </td>
+                                <td>
+                                    <span class="shopping-cart-total" prie-one-product="@item.BaglamaProduct.ProductPrice">$@string.Format("{0:F2}", (item.BaglamaProductQuantity * item.BaglamaProduct.ProductPrice))</span>
+                                </td>
+                                <td>
+                                    <span class="remove-cart-item bg-transparent border-0">
+                                        <svg width="10" height="10" viewBox="0 0 10 10" fill="#767676" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M0.259435 8.85506L9.11449 0L10 0.885506L1.14494 9.74056L0.259435 8.85506Z"></path>
+                                            <path d="M0.885506 0.0889838L9.74057 8.94404L8.85506 9.82955L0 0.97449L0.885506 0.0889838Z">
+                                            </path>
+                                        </svg>
+                                    </span>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                @* <div class="cart-table-footer justify-content-end">
+                    <span class="btn btn-light rounded-0 emptyBasket">EMPTY CART</span>
+                </div> *@
+            </div>
+            <div class="shopping-cart__totals-wrapper">
+                <div class="sticky-content">
+                    <div class="shopping-cart__totals">
+                        <h3>Cart Totals</h3>
+                        <table class="cart-totals">
+                            <tbody>
+                                <tr>
+                                    <th>Subtotal</th>
+                                    <td class="subtotal">$@string.Format("{0:F2}", total)</td>
+                                </tr>
+                                <tr>
+                                    <th>Address</th>
+                                    <td>
+                                        <p>Country: @Model.CargoAddressCountry</p>
+                                        <p>City: @Model.CargoAddressCity</p>
+                                        <p>Address: @Model.CargoAddressDistrict, @Model.CargoAddressStreet, @Model.CargoAddressHouse, @Model.CargoAddressApartment</p>
+
+                                    </td>
+                                    @* <th>Shipping</th>
+                                    <td>
+                                        <div class="form-check">
+                                            <input class="form-check-input form-check-input_fill" name="ShippingType" type="radio" shippingCost="0" value="Free shipping" id="free_shipping">
+                                            <label class="form-check-label" for="free_shipping">Free shipping</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input form-check-input_fill" name="ShippingType" type="radio" shippingCost="49" value="Flat rate: $49" id="flat_rate">
+                                            <label class="form-check-label" for="flat_rate">Flat rate: $49</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input form-check-input_fill" name="ShippingType" type="radio" shippingCost="8" value="Local pickup: $8" id="local_pickup">
+                                            <label class="form-check-label" for="local_pickup">Local pickup: $8</label>
+                                        </div>
+                                        <div>Shipping to AL.</div>
+                                        <div>
+                                            <a href="#" class="menu-link menu-link_us-s">CHANGE ADDRESS</a>
+                                        </div>
+                                    </td> *@
+                                </tr>
+                                <tr>
+                                    <th>VAT</th>
+                                    <td>$19</td>
+                                </tr>
+                                <tr>
+                                    <th>Total</th>
+                                    <td>
+                                        <input type="hidden" name="TotalPrice" id="TotalPrice" value="@string.Format("{0:F2}", (total == 0 ? 0.00 : total + 19))" />
+                                        <label for="TotalPrice" class="totalPrc">@string.Format("{0:F2}", (total == 0 ? 0.00 : total + 19))</label>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    @* <div class="mobile_fixed-btn_wrapper">
+                        <div class="button-wrapper container">
+                            <button type="submit" class="btn btn-primary btn-checkout d-flex justify-content-center align-items-center">PROCEED TO CHECKOUT</button>
+                        </div>
+                    </div> *@
+                </div>
+            </div>
+        </div>
+    </form>
+</section>
+

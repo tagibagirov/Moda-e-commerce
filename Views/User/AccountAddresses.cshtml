@@ -1,9 +1,10 @@
 ﻿@model Address
-@{
-    var addressCoutn = 0;
-    var user = ViewBag.User as User;
 
+@{
+    bool addressAddBool = ViewBag.AddressAdd != null ? (bool)ViewBag.AddressAdd : false;
+    bool addressEditBool = ViewBag.AddressEdit != null ? (bool)ViewBag.AddressEdit : false;
 }
+
 
 <section style="padding-top: 80px;">
     <div class="my-account container mt-4 pt-4 mb-5 pb-5">
@@ -20,69 +21,139 @@
                         {
                             <div class="my-account__address-item">
                                 <div class="my-account__address-item__title">
-                                    <h5>Address @(addressCoutn++)</h5>
-                                    <a href="user/EditAddress/@item.AddressId">Edit</a>
+                                    <h5 class="me-auto">@item.AddressTitle</h5>
+                                    <span class="showEditAddress" id="@item.AddressId">Edit</span>
+                                    <a class="text-danger ms-3" href="/user/RemaveAddress/@item.AddressId">Remove</a>
                                 </div>
                                 <div class="my-account__address-item__detail">
-                                    <p>@user.UserName @user.UserSurname</p>
-                                    <p>@item.AddressCity, @item.AddressDistrict, @item.AddressStreet, @item.AddressHouse, @item.AddressApartment</p>
-                                    <p>@item.AddressCountry</p>
-                                    <br>
-                                    <p>@user.UserNickname</p>
-                                    <p>@user.UserEmail</p>
+                                    <p class="mb-1"><b class="me-4 fw-500">Country:</b> @item.AddressCountry</p>
+                                    <p class="mb-1"><b class="me-4 fw-500">City:</b>  @item.AddressCity</p>
+                                    <p class="mb-1"><b class="me-4 fw-500">Address:</b> @item.AddressDistrict, @item.AddressStreet, @item.AddressHouse, @item.AddressApartment</p>
+                                    @* <br>
+                                    <p class="mb-1"><b class="me-4 fw-500">Phone:</b> </p>
+                                    <p class="mb-1"><b class="me-4 fw-500">Email:</b>@user.UserEmail</p> *@
                                 </div>
                             </div>
+                            <form asp-controller="user" asp-action="EditAddress" asp-route-id="@item.AddressId" method="post" class="editAddressForm @(!addressEditBool ? "d-none": "")">
+                                <input type="hidden" id="addressEditBool" name="addressEditBool" value="@addressEditBool" />
+                                <h5 class="me-auto">@item.AddressTitle</h5>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-floating my-3">
+                                            <input asp-for="AddressTitle" class="form-control" value="@item.AddressTitle" placeholder="Title">
+                                            <span asp-validation-for="AddressTitle" class="text-danger position-relative"></span>
+                                            <label for="AddressTitle">Address Title</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-floating my-3">
+                                            <input asp-for="AddressCountry" class="form-control" value="@item.AddressCountry" placeholder="Country">
+                                            <span asp-validation-for="AddressCountry" class="text-danger position-relative"></span>
+                                            <label for="AddressCountry">Country</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-floating my-3">
+                                            <input asp-for="AddressCity" class="form-control" value="@item.AddressCity" placeholder="City">
+                                            <span asp-validation-for="AddressCity" class="text-danger position-relative"></span>
+                                            <label for="AddressCity">City</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-floating my-3">
+                                            <input asp-for="AddressDistrict" class="form-control" value="@item.AddressDistrict" placeholder="District">
+                                            <span asp-validation-for="AddressDistrict" class="text-danger position-relative"></span>
+                                            <label for="AddressDistrict">District</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-floating my-3">
+                                            <input asp-for="AddressStreet" class="form-control" value="@item.AddressStreet" placeholder="Street">
+                                            <span asp-validation-for="AddressStreet" class="text-danger position-relative"></span>
+                                            <label for="AddressStreet">Street</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-floating my-3">
+                                            <input asp-for="AddressHouse" class="form-control" value="@item.AddressHouse" placeholder="House">
+                                            <span asp-validation-for="AddressHouse" class="text-danger position-relative"></span>
+                                            <label for="AddressHouse">House</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-floating my-3">
+                                            <input asp-for="AddressApartment" class="form-control" value="@item.AddressApartment" placeholder="Apartment">
+                                            <span asp-validation-for="AddressApartment" class="text-danger position-relative"></span>
+                                            <label for="AddressApartment">Apartment</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="my-3">
+                                    <button class="btn btn-primary px-4 me-3">Save change</button>
+                                    <a href="/user/AccountAddresses" class="btn btn-primary px-4">Cancel</a>
+                                </div>
+                            </form>
+
                         }
                     </div>
                     <button class="btn btn-primary showAddAddress">Add address</button>
                 </div>
-                <form asp-controller="user" asp-action="AddAddress" method="post" class="addAddressForm d-none page-content">
+                <form asp-controller="user" asp-action="AddAddress" method="post" class="addAddressForm @(!addressAddBool ?"d-none":"")  page-content">
+                    <input type="hidden" id="addressAddBool" name="addressAddBool" value="@addressAddBool" />
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-floating my-3">
-                                <input asp-for="AddressCountry" class="form-control" id="account_Country"
-                                       placeholder="Country">
-                                <label for="account_Country">Country</label>
+                                <input asp-for="AddressTitle" class="form-control" placeholder="Title">
+                                <span asp-validation-for="AddressTitle" class="text-danger position-relative"></span>
+                                <label for="AddressTitle">Address Title</label>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating my-3">
-                                <input asp-for="AddressCity" class="form-control" id="account_City"
-                                       placeholder="City">
-                                <label for="account_City">City</label>
+                                <input asp-for="AddressCountry" class="form-control" placeholder="Country">
+                                <span asp-validation-for="AddressCountry" class="text-danger position-relative"></span>
+                                <label for="AddressCountry">Country</label>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating my-3">
-                                <input asp-for="AddressDistrict" class="form-control" id="account_District"
-                                       placeholder="District">
-                                <label for="account_District">District</label>
+                                <input asp-for="AddressCity" class="form-control" placeholder="City">
+                                <span asp-validation-for="AddressCity" class="text-danger position-relative"></span>
+                                <label for="AddressCity">City</label>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating my-3">
-                                <input asp-for="AddressStreet" class="form-control" id="account_Street"
-                                       placeholder="Street">
-                                <label for="account_Street">Street</label>
+                                <input asp-for="AddressDistrict" class="form-control" placeholder="District">
+                                <span asp-validation-for="AddressDistrict" class="text-danger position-relative"></span>
+                                <label for="AddressDistrict">District</label>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating my-3">
-                                <input asp-for="AddressHouse" class="form-control" id="account_House"
-                                       placeholder="House">
-                                <label for="account_House">House</label>
+                                <input asp-for="AddressStreet" class="form-control" placeholder="Street">
+                                <span asp-validation-for="AddressStreet" class="text-danger position-relative"></span>
+                                <label for="AddressStreet">Street</label>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating my-3">
-                                <input asp-for="AddressApartment" class="form-control" id="account_Apartment"
-                                       placeholder="Apartment">
-                                <label for="account_Apartment">Apartment</label>
+                                <input asp-for="AddressHouse" class="form-control" placeholder="House">
+                                <span asp-validation-for="AddressHouse" class="text-danger position-relative"></span>
+                                <label for="AddressHouse">House</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating my-3">
+                                <input asp-for="AddressApartment" class="form-control" placeholder="Apartment">
+                                <span asp-validation-for="AddressApartment" class="text-danger position-relative"></span>
+                                <label for="AddressApartment">Apartment</label>
                             </div>
                         </div>
                     </div>
                     <div class="my-3">
-                        <button class="btn btn-primary px-4">Save</button>
+                        <button class="btn btn-primary px-4 me-3">Save</button>
+                        <a href="/user/AccountAddresses" class="btn btn-primary px-4">Cancel</a>
                     </div>
                 </form>
             </div>

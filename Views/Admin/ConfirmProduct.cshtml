@@ -12,13 +12,17 @@
                 <div class="page-content row row-cols-3">
                     @foreach (Product item in Model)
                     {
+
+                        var photo = item.Photos.FirstOrDefault();
+                        @* var photoUrl = photo != null ? $"/img/productsPhoto/{photo.PhotoName}" : "/img/defaultPhoto.jpg"; // Замените на URL фотографии по умолчанию *@
+
                         <div class="card border-0 mb-3 mb-md-4 mb-xxl-5 text-start">
                             <div class="card-img position-relative">
                                 <a href="/home/productDescription/@item.ProductId">
-                                    <img src="@item.ProductPhoto"
+                                    <img src="/img/productsPhoto/@item.Photos.ToList()[0].PhotoName"
                                          class="card-img-top  rounded-0" width="330" height="400" alt="...">
                                 </a>
-                                <div class="position-absolute top-0 start-0 w-100 d-flex justify-content-between"
+                               @*  <div class="position-absolute top-0 start-0 w-100 d-flex justify-content-between"
                                      style="padding: 10px;">
                                     <div class="">
                                         <span class="d-block bg-white py-1 px-2">NEW</span>
@@ -26,9 +30,9 @@
                                     <div class=" ms-auto">
                                         <span class="d-block bg-danger text-white py-1 px-2">-67%</span>
                                     </div>
-                                </div>
-                                <button class="btn position-absolute border-0 text-uppercase fw-500 text-white confirm bg-success">Confirm</button>
-                                <button class="btn position-absolute border-0 text-uppercase fw-500 bg-danger text-white">Reject</button>
+                                </div> *@
+                                <button class="btn position-absolute border-0 text-uppercase fw-500 text-white confirm-product bg-success" productId = "@item.ProductId">Confirm</button>
+                                <button class="btn position-absolute border-0 text-uppercase fw-500 text-white reject-product bg-danger">Reject</button>
                             </div>
                             <div class="card-body position-relative p-0 mt-3">
                                 <p class="item-category text-secondary  mb-1">@item.ProductCategory.CategoryName</p>

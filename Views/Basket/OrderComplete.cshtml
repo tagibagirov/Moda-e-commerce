@@ -1,9 +1,7 @@
-﻿@{
-    float? total = 0;
-    foreach (Basket item in Model)
-    {
-        total += item.BasketProductQuantity * item.BasketProduct.ProductPrice;
-    }
+﻿@model Cargo
+@{
+    float? total = Model.Baglamas.Sum(x=> x.BaglamaProduct.ProductPrice * x.BaglamaProductQuantity);
+    
 }
 
 
@@ -48,15 +46,15 @@
             <div class="order-info">
                 <div class="order-info__item">
                     <label>Order Number</label>
-                    <span>@ViewBag.Cargos.CargoId</span>
+                    <span>@Model.CargoId</span>
                 </div>
                 <div class="order-info__item">
                     <label>Date</label>
-                    <span>@ViewBag.Cargos.CargoTime</span>
+                    <span>@Model.CargoTime</span>
                 </div>
                 <div class="order-info__item">
                     <label>Total</label>
-                    <span>$@string.Format("{0:F2}", (ViewBag.ShippingType == "free_shipping" ? total + 19 : (ViewBag.ShippingType == "flat_rate" ? total + 19 + 49 : total + 19 + 8)))</span>
+                    <span>$@ViewBag.BaglamaDetails.TotalPrice</span>
                 </div>
                 <div class="order-info__item">
                     <label>Paymetn Method</label>
@@ -74,14 +72,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (Basket item in Model)
+                            @foreach (Baglama item in Model.Baglamas)
                             {
                                 <tr>
                                     <td>
-                                        @item.BasketProduct.ProductName x @item.BasketProductQuantity
+                                        @item.BaglamaProduct.ProductName x @item.BaglamaProductQuantity
                                     </td>
                                     <td>
-                                        $@string.Format("{0:F2}", (item.BasketProductQuantity * item.BasketProduct.ProductPrice))
+                                        $@string.Format("{0:F2}", (item.BaglamaProductQuantity * item.BaglamaProduct.ProductPrice))
                                     </td>
                                 </tr>
                             }
@@ -95,7 +93,7 @@
                             </tr>
                             <tr>
                                 <th>SHIPPING</th>
-                                <td>@(ViewBag.ShippingType == "free_shipping" ? "Free shipping" : (ViewBag.ShippingType == "flat_rate" ? "Flat rate: $49" : "Local pickup: $8"))</td>
+                                <td>@ViewBag.BaglamaDetails.ShippingType</td>
                             </tr>
                             <tr>
                                 <th>VAT</th>
@@ -103,7 +101,7 @@
                             </tr>
                             <tr>
                                 <th>TOTAL</th>
-                                <td>$@string.Format("{0:F2}", (ViewBag.ShippingType == "free_shipping" ? total + 19 : (ViewBag.ShippingType == "flat_rate" ? total + 19 + 49 : total + 19 + 8)))</td>
+                                <td>$@ViewBag.BaglamaDetails.TotalPrice</td>
                             </tr>
                         </tbody>
                     </table>

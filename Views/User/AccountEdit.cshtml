@@ -1,5 +1,7 @@
 ﻿@model User
-
+@{
+    bool passwordBool = ViewBag.ChangePassword != null ? (bool)ViewBag.ChangePassword : false;
+}
 
 <section style="padding-top: 80px;">
     <div class="my-account container mt-4 pt-4 mb-5 pb-5">
@@ -12,37 +14,46 @@
                 <div class="page-content my-account__edit">
                     <div class="my-account__edit-form">
                         <form asp-controller="user" asp-action="AccountEdit" method="post" class="needs-validation">
+                            <div asp-validation-summary="All"> </div>
+                            <input type="hidden" id="passwordBool" name="passwordBool" value="@passwordBool" />
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-floating my-3">
-                                        <input asp-for="UserName" class="form-control" id="account_first_name"
-                                               placeholder="First Name">
-                                        <label for="account_first_name">First Name</label>
+                                        <input asp-for="UserName" class="form-control" placeholder="First Name">
+                                        <label for="UserName">First Name</label>
+                                        <span asp-validation-for="UserName" class="text-danger position-relative"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating my-3">
-                                        <input asp-for="UserSurname" class="form-control" id="account_last_name"
-                                               placeholder="Last Name">
-                                        <label for="account_last_name">Last Name</label>
+                                        <input asp-for="UserSurname" class="form-control" placeholder="Last Name">
+                                        <label for="UserSurname">Last Name</label>
+                                        <span asp-validation-for="UserSurname" class="text-danger position-relative"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-floating my-3">
-                                        <input asp-for="UserNickname" class="form-control" id="account_display_name"
-                                               placeholder="Nickname">
-                                        <label for="account_display_name">Nickname</label>
+                                        <input asp-for="UserNickname" class="form-control" placeholder="Nickname">
+                                        <label for="UserNickname">Nickname</label>
+                                        <span asp-validation-for="UserNickname" class="text-danger position-relative"></span>
                                     </div>
                                 </div>
-                                @* <div class="col-md-12">
-                                <div class="form-floating my-3">
-                                <input type="email" class="form-control" id="account_email"
-                                placeholder="Email Address" >
-                                <label for="account_email">Email Address</label>
+                                <div class="col-md-12">
+                                    <div class="form-floating my-3">
+                                        <input asp-for="UserPhone" class="form-control" placeholder="Phone">
+                                        <label for="UserPhone">Phone</label>
+                                        <span asp-validation-for="UserPhone" class="text-danger position-relative"></span>
+                                    </div>
                                 </div>
-                                </div> *@
+                                <div class="col-md-12">
+                                    <div class="form-floating my-3">
+                                        <input asp-for="UserEmail" class="form-control" placeholder="Email">
+                                        <label for="UserEmail">Email</label>
+                                        <span asp-validation-for="UserEmail" class="text-danger position-relative"></span>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="row edit-password d-none">
+                            <div class="row edit-password @(!passwordBool ? "d-none": "")">
                                 <div class="col-md-12">
                                     <div class="my-3">
                                         <h5 class="text-uppercase mb-0">Password Change</h5>
@@ -50,30 +61,31 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-floating my-3">
-                                        <input name="UserPassword" class="form-control" id="account_current_password"
-                                               placeholder="Current password">
-                                        <label for="account_current_password">Current password</label>
+                                        <input asp-for="UserPassword" type="password" class="form-control" placeholder="Current password">
+                                        <label for="UserPassword">Current password</label>
+                                        <span class="text-danger position-relative">@Html.ValidationMessage("CurrentPassword")</span>
+
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-floating my-3">
-                                        <input name="NewPassword" type="password" class="form-control" id="account_new_password"
-                                               placeholder="New password">
-                                        <label for="account_new_password">New password</label>
+                                        <input name="NewPassword" type="password" class="form-control" placeholder="New password">
+                                        <label for="NewPassword">New password</label>
+                                        <span class="text-danger position-relative">@Html.ValidationMessage("NewPassword")</span>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-floating my-3">
-                                        <input name="NewPassword" type="password" class="form-control"
-                                               data-cf-pwd="#account_new_password" id="account_confirm_password"
-                                               placeholder="Confirm new password">
-                                        <label for="account_confirm_password">Confirm new password</label>
+                                        <input name="NewPassword" type="password" class="form-control" placeholder="Confirm new password">
+                                        <label for="NewPassword">Confirm new password</label>
                                         <div class="invalid-feedback">Passwords did not match!</div>
+                                        <span class="text-danger position-relative">@Html.ValidationMessage("NewPassword")</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="my-3">
-                                <button class="btn btn-primary">Save Changes</button>
+                            <div class="my-3 d-flex">
+                                <button class="btn btn-primary me-3">Save Changes</button>
+                                <a href="/user/AccountEdit" class="btn btn-primary px-4 d-flex align-items-center justify-content-center">Cancel</a>
                             </div>
                             <span class="btn-text text-decoration-underline show-edit-password">Change Password</span>
                         </form>

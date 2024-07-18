@@ -4,7 +4,7 @@
 <div class="card border-0 mb-3 mb-md-4 mb-xxl-5 text-start">
     <div class="card-img position-relative">
         <a href="/home/productDescription/@Model.ProductId">
-            <img src="@Model.ProductPhoto" class="card-img-top  rounded-0" width="100%" height="400" alt="...">
+            <img src="/img/productsPhoto/@Model.Photos.ToList()[0].PhotoName" class="card-img-top  rounded-0" width="100%" height="400" alt="...">
         </a>
         @* <div class="position-absolute top-0 start-0 w-100 d-flex justify-content-between" style="padding: 10px;">
         <div class="">
@@ -57,7 +57,7 @@
                         }
                     }
                 </div>
-                <span class="reviews-note text-secondary ms-1 ">8k+ reviews</span>
+                <span class="reviews-note text-secondary ms-1 ">@Model.ProductRatings reviews</span>
                 @* <div class="d-flex align-items-center mt-1 ms-auto">
                 <a href="#" class="swatch-color pc__swatch-color"
                 style="color: #222222 !important"></a>

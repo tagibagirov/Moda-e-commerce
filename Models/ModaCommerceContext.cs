@@ -31,7 +31,11 @@ public partial class ModaCommerceContext : DbContext
 
     public virtual DbSet<Level> Levels { get; set; }
 
+    public virtual DbSet<Photo> Photos { get; set; }
+
     public virtual DbSet<Product> Products { get; set; }
+
+    public virtual DbSet<Size> Sizes { get; set; }
 
     public virtual DbSet<User> Users { get; set; }
 
@@ -51,6 +55,7 @@ public partial class ModaCommerceContext : DbContext
             entity.Property(e => e.AddressDistrict).HasMaxLength(50);
             entity.Property(e => e.AddressHouse).HasMaxLength(10);
             entity.Property(e => e.AddressStreet).HasMaxLength(50);
+            entity.Property(e => e.AddressTitle).HasMaxLength(30);
 
             entity.HasOne(d => d.AddressUser).WithMany(p => p.Addresses)
                 .HasForeignKey(d => d.AddressUserId)
@@ -59,17 +64,17 @@ public partial class ModaCommerceContext : DbContext
 
         modelBuilder.Entity<Baglama>(entity =>
         {
-            entity.HasKey(e => e.BaglamaId).HasName("PK__Baglama__AEBA56E9D40D9FB0");
+            entity.HasKey(e => e.BaglamaId).HasName("PK__Baglama__AEBA56E9949E6579");
 
             entity.ToTable("Baglama");
 
             entity.HasOne(d => d.BaglamaCargo).WithMany(p => p.Baglamas)
                 .HasForeignKey(d => d.BaglamaCargoId)
-                .HasConstraintName("FK__Baglama__Baglama__03F0984C");
+                .HasConstraintName("FK__Baglama__Baglama__3F115E1A");
 
             entity.HasOne(d => d.BaglamaProduct).WithMany(p => p.Baglamas)
                 .HasForeignKey(d => d.BaglamaProductId)
-                .HasConstraintName("FK__Baglama__Baglama__04E4BC85");
+                .HasConstraintName("FK__Baglama__Baglama__40058253");
         });
 
         modelBuilder.Entity<Basket>(entity =>
@@ -93,21 +98,25 @@ public partial class ModaCommerceContext : DbContext
 
         modelBuilder.Entity<Cargo>(entity =>
         {
-            entity.HasKey(e => e.CargoId).HasName("PK__Cargo__B4E665CD0E243B50");
+            entity.HasKey(e => e.CargoId).HasName("PK__Cargo__B4E665CDBD88A56E");
 
             entity.ToTable("Cargo");
 
+            entity.Property(e => e.CargoAddressApartment).HasMaxLength(10);
+            entity.Property(e => e.CargoAddressCity).HasMaxLength(50);
+            entity.Property(e => e.CargoAddressCountry).HasMaxLength(50);
+            entity.Property(e => e.CargoAddressDistrict).HasMaxLength(50);
+            entity.Property(e => e.CargoAddressHouse).HasMaxLength(10);
+            entity.Property(e => e.CargoAddressStreet).HasMaxLength(50);
+            entity.Property(e => e.CargoNotes).HasMaxLength(300);
+            entity.Property(e => e.CargoUserEmail).HasMaxLength(60);
+            entity.Property(e => e.CargoUserName).HasMaxLength(50);
+            entity.Property(e => e.CargoUserPhone).HasMaxLength(30);
+            entity.Property(e => e.CargoUserSurname).HasMaxLength(50);
+
             entity.HasOne(d => d.CargoLevel).WithMany(p => p.Cargos)
                 .HasForeignKey(d => d.CargoLevelId)
-                .HasConstraintName("FK__Cargo__CargoLeve__160F4887");
-
-            entity.HasOne(d => d.CargoProduct).WithMany(p => p.Cargos)
-                .HasForeignKey(d => d.CargoProductId)
-                .HasConstraintName("FK__Cargo__CargoProd__6754599E");
-
-            entity.HasOne(d => d.CargoUser).WithMany(p => p.Cargos)
-                .HasForeignKey(d => d.CargoUserId)
-                .HasConstraintName("FK__Cargo__CargoUser__01142BA1");
+                .HasConstraintName("FK__Cargo__CargoLeve__3C34F16F");
         });
 
         modelBuilder.Entity<Category>(entity =>
@@ -130,7 +139,18 @@ public partial class ModaCommerceContext : DbContext
         {
             entity.HasKey(e => e.LevelId).HasName("PK__Levels__09F03C261D00BFE5");
 
-            entity.Property(e => e.LevelName).HasMaxLength(20);
+            entity.Property(e => e.LevelName).HasMaxLength(50);
+        });
+
+        modelBuilder.Entity<Photo>(entity =>
+        {
+            entity.HasKey(e => e.PhotoId).HasName("PK__Photos__21B7B5E22E03A2CE");
+
+            entity.Property(e => e.PhotoName).HasMaxLength(30);
+
+            entity.HasOne(d => d.PhotoProduct).WithMany(p => p.Photos)
+                .HasForeignKey(d => d.PhotoProductId)
+                .HasConstraintName("FK__Photos__PhotoPro__5224328E");
         });
 
         modelBuilder.Entity<Product>(entity =>
@@ -142,7 +162,7 @@ public partial class ModaCommerceContext : DbContext
             entity.Property(e => e.ProductCountry).HasMaxLength(50);
             entity.Property(e => e.ProductGender).HasMaxLength(10);
             entity.Property(e => e.ProductName).HasMaxLength(100);
-            entity.Property(e => e.ProductSize).HasMaxLength(20);
+            entity.Property(e => e.ProductSize).HasMaxLength(50);
             entity.Property(e => e.ProductStatus).HasMaxLength(5);
 
             entity.HasOne(d => d.ProductBrend).WithMany(p => p.Products)
@@ -158,6 +178,14 @@ public partial class ModaCommerceContext : DbContext
                 .HasConstraintName("FK__Products__Produc__6FE99F9F");
         });
 
+        modelBuilder.Entity<Size>(entity =>
+        {
+            entity.HasKey(e => e.SizeId).HasName("PK__Sizes__83BD095AA7D97750");
+
+            entity.Property(e => e.SizeId).HasColumnName("SizeID");
+            entity.Property(e => e.SizeName).HasMaxLength(6);
+        });
+
         modelBuilder.Entity<User>(entity =>
         {
             entity.HasKey(e => e.UserId).HasName("PK__Users__1788CC4C823F8788");
@@ -166,6 +194,7 @@ public partial class ModaCommerceContext : DbContext
             entity.Property(e => e.UserName).HasMaxLength(50);
             entity.Property(e => e.UserNickname).HasMaxLength(50);
             entity.Property(e => e.UserPassword).HasMaxLength(50);
+            entity.Property(e => e.UserPhone).HasMaxLength(30);
             entity.Property(e => e.UserRole).HasMaxLength(10);
             entity.Property(e => e.UserStatus).HasMaxLength(10);
             entity.Property(e => e.UserSurname).HasMaxLength(50);

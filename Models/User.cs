@@ -21,7 +21,7 @@ public partial class User
 
     public string? UserStatus { get; set; }
 
-    public virtual ICollection<Address> Addresses { get; set; } = new List<Address>();
+    public string? UserPhone { get; set; }
 
-    public virtual ICollection<Cargo> Cargos { get; set; } = new List<Cargo>();
+    public virtual ICollection<Address> Addresses { get; set; } = new List<Address>();
 }

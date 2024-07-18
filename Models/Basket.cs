@@ -13,5 +13,7 @@ public partial class Basket
 
     public int? BasketProductQuantity { get; set; }
 
+    public int? BasketProductSizeId { get; set; }
+
     public virtual Product? BasketProduct { get; set; }
 }

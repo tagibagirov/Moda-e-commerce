@@ -11,17 +11,35 @@ public partial class Cargo
 
     public float? CargoPrice { get; set; }
 
-    public int? CargoProductId { get; set; }
+    public int? CargoLevelId { get; set; }
+
+    public string? CargoNotes { get; set; }
+
+    public float? CargoWeight { get; set; }
+
+    public string? CargoUserName { get; set; }
+
+    public string? CargoUserSurname { get; set; }
+
+    public string? CargoUserPhone { get; set; }
+
+    public string? CargoUserEmail { get; set; }
+
+    public string? CargoAddressCountry { get; set; }
+
+    public string? CargoAddressCity { get; set; }
+
+    public string? CargoAddressDistrict { get; set; }
+
+    public string? CargoAddressStreet { get; set; }
+
+    public string? CargoAddressHouse { get; set; }
+
+    public string? CargoAddressApartment { get; set; }
 
     public int? CargoUserId { get; set; }
-
-    public int? CargoLevelId { get; set; }
 
     public virtual ICollection<Baglama> Baglamas { get; set; } = new List<Baglama>();
 
     public virtual Level? CargoLevel { get; set; }
-
-    public virtual Product? CargoProduct { get; set; }
-
-    public virtual User? CargoUser { get; set; }
 }

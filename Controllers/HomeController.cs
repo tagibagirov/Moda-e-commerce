@@ -14,26 +14,38 @@ namespace ModaECommerce.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        //private List<int> _colorList;
         private ModaCommerceContext _sql;
 
         public HomeController(ILogger<HomeController> logger, ModaCommerceContext sql)
         {
             _sql = sql;
             _logger = logger;
-            //_colorList = new List<int>();
         }
 
         public IActionResult Index()
         {
-            return View(_sql.Products.Include(x => x.ProductCategory).Where(p => p.ProductStatus == "True").ToList());
+            return View(_sql.Products.Include(x => x.ProductCategory).Include(x => x.Photos).Where(p => p.ProductStatus == "True").ToList());
         }
+        [HttpGet("/home/SearchProduct/{value}")]
+        public IActionResult SearchProduct(string value)
+        {
+            var searchValue = value.ToLower();
+            var product = _sql.Products.Include(x => x.Photos)
+                .Include(x => x.ProductCategory)
+                .Include(x => x.ProductBrend)
+                .Where(x => x.ProductName.ToLower().Contains(searchValue) 
+                || x.ProductBrend.BrandName.ToLower().Contains(searchValue) 
+                || x.ProductCategory.CategoryName.ToLower().Contains(searchValue));
+            return Ok(product);
+        }
+
         public IActionResult Shop(string Gender, int sort)
         {
+            ViewBag.Sizes = _sql.Sizes.ToList();
             ViewBag.Categories = _sql.Categories.ToList();
             ViewBag.Colors = _sql.Colors.ToList();
             ViewBag.Brands = _sql.Brands.ToList();
-            IQueryable<Product> products = _sql.Products.Include(x => x.ProductCategory).Where(p => p.ProductStatus == "True");
+            IQueryable<Product> products = _sql.Products.Include(x => x.ProductCategory).Include(x => x.Photos).Where(p => p.ProductStatus == "True");
             if (!Gender.IsNullOrEmpty())
             {
                 products = products.Where(x => x.ProductGender == Gender);
@@ -55,12 +67,17 @@ namespace ModaECommerce.Controllers
             }
             return View(products.ToList());
         }
-        public IActionResult Filter(int cat, string colorList, string brandList, string sizeList)
+        public IActionResult Filter(int cat, string colorList, string brandList, string sizeList, int maxPrice = 0, int minPrice = 0)
         {
             IQueryable<Product> products = _sql.Products
                 .Include(x => x.ProductBrend)
                 .Include(x => x.ProductCategory)
-                .Include(x => x.ProductColor);
+                .Include(x => x.ProductColor)
+                .Include(x => x.Photos).Where(x => x.ProductStatus == "True").Where(x => x.ProductPrice > minPrice);
+            if(maxPrice != 0)
+            {
+                products = products.Where(x => x.ProductPrice < maxPrice);
+            }
             if (cat != 0)
             {
                 products = products.Where(x => x.ProductCategoryId == cat);
@@ -75,18 +92,18 @@ namespace ModaECommerce.Controllers
                 List<int> brandList2 = JsonSerializer.Deserialize<List<int>>(json: brandList);
                 products = products.Where(x => brandList2.Contains((int)x.ProductBrendId));
             }
-            //if (sizeList != "[]" && sizeList != null)
-            //{
-            //    List<string> sizeList2 = JsonSerializer.Deserialize<List<string>>(json: sizeList);
-            //    foreach (var size in sizeList2)
-            //    {
-            //        products = products.Where(p => JsonSerializer.Deserialize<List<string>>(p.ProductSize, new JsonSerializerOptions()).Contains(size));
+            if (sizeList != "[]" && sizeList != null)
+            {
+                List<string> sizeList2 = JsonSerializer.Deserialize<List<string>>(json: sizeList);
+                foreach (var size in sizeList2)
+                {
+                    products = products.Where(p => JsonSerializer.Deserialize<List<string>>(p.ProductSize, new JsonSerializerOptions()).Contains(size));
 
-            //    };
-            //}
+                };
+            }
             return Json(products.ToList());
         }
-        public IActionResult SearchCategory(string brand)
+        public IActionResult SearchBrand(string brand)
         {
             IQueryable<Brand> brands = _sql.Brands;
             if (brand != null)
@@ -97,7 +114,8 @@ namespace ModaECommerce.Controllers
         }
         public IActionResult ProductDescription(int id)
         {
-            return View(_sql.Products.FirstOrDefault(x => x.ProductId == id));
+            ViewBag.Sizes = _sql.Sizes.ToList();
+            return View(_sql.Products.Include(x => x.ProductBrend).Include(x => x.ProductCategory).Include(x => x.ProductColor).Include(x => x.Photos).FirstOrDefault(x => x.ProductId == id));
         }
         public IActionResult Privacy()
         {

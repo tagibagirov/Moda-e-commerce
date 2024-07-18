@@ -1,5 +1,10 @@
 ﻿@model Product
-
+@{
+    var colors = ViewBag.Colors as List<Color>;
+    var sizes = ViewBag.Sizes as List<Size>;
+    var brands = ViewBag.Brands as List<Brand>;
+    var categories = ViewBag.Categories as List<Category>;
+}
 <section style="padding-top: 80px;">
     <div class="add-product container pt-4 mt-4 pb-5 mb-5">
         <h2 class="page-title">Admin</h2>
@@ -9,89 +14,125 @@
             </div>
             <div class="col-lg-9">
                 <div class="page-content">
-                    <form asp-controller="Admin" class="needs-validation" asp-action="AddProduct" method="post">
+                    <form asp-controller="Admin" class="needs-validation" asp-action="AddProduct" method="post" enctype="multipart/form-data">
                         <div class="row">
-                            <div class="col-lg-6 mb-3">
+                            <div class="col-lg-12">
                                 <div class="form-floating my-3">
                                     <input asp-for="ProductName" class="form-control rounded-0" placeholder="Name">
                                     <label for="ProductName">Name</label>
+                                    <span asp-validation-for="ProductName" class="text-danger position-relative"></span>
                                 </div>
                             </div>
-                            <div class="col-lg-6 mb-3">
+                            <div class="col-lg-6">
                                 <div class="form-floating my-3">
                                     <input asp-for="ProductPrice" class="form-control rounded-0" placeholder="Price">
                                     <label for="ProductPrice">Price</label>
+                                    <span asp-validation-for="ProductPrice" class="text-danger position-relative"></span>
                                 </div>
                             </div>
-                            <div class="col-lg-6 mb-3">
-                                <div class="form-floating my-3">
-                                    <input asp-for="ProductYear" class="form-control rounded-0" placeholder="Year">
-                                    <label for="ProductYear">Year</label>
+                            <div class="col-lg-6">
+                                <div class=" my-3 position-relative">
+                                    <input asp-for="ProductColorId" type="hidden" class="form-control rounded-0 colorInput" placeholder="Weight">
+                                    <label for="ProductColorId" class="colorLabel">Color</label>
+                                    <span asp-validation-for="ProductColorId" class="text-danger position-relative"></span>
+                                    <div class="selectColor">
+                                        @foreach (Color item in colors)
+                                        {
+                                            <span class="swatch-color js-filter-color" colorId="@item.ColorId" colorName="@item.ColorName" style="color: @item.ColorHexCode !important"></span>
+                                        }
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6 mb-3">
-                                <div class="form-floating my-3">
-                                    <input asp-for="ProductPhoto" class="form-control rounded-0" placeholder="Photo">
-                                    <label for="ProductPhoto">Photo</label>
+                            <div class="col-lg-6">
+                                <div class="my-3">
+                                    <div class="d-flex flex-wrap align-items-center sizes py-2">
+                                        <span class="me-auto">Size:</span>
+                                        @foreach (Size item in sizes)
+                                        {
+                                            <span class="swatch-size rounded-0 btn me-3 js-filter-size" sizeId="@item.SizeId">@item.SizeName</span>
+                                        }
+                                    </div>
+                                    <input asp-for="ProductSize" type="hidden" class="form-control size-input rounded-0">
+                                    <span asp-validation-for="ProductSize" class="text-danger position-relative"></span>
                                 </div>
                             </div>
-                            <div class="col-lg-6 mb-3">
+                            <div class="col-lg-6">
+                                <div class="my-3 position-relative">
+                                    <input asp-for="ProductBrendId" type="hidden" class="form-control rounded-0">
+                                    <label for="ProductBrendId" class="brendLabel">Brend</label>
+                                    <span asp-validation-for="ProductBrendId" class="text-danger position-relative"></span>
+                                    <div class="dropdown brendDropdown">
+                                        <ul>
+                                            @foreach (Brand item in brands)
+                                            {
+                                                <li id="@item.BrandId">@item.BrandName</li>
+                                            }
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 d-flex align-items-center flex-wrap">
+                                <div class="my-3 w-100 d-flex align-items-center">
+                                    <span class="me-5">Gender:</span>
+                                    <input type="radio" asp-for="ProductGender" id="Men" value="Men" class="me-2">
+                                    <label for="Men" class="me-4">Men</label>
+                                    <input type="radio" id="Women" asp-for="ProductGender" value="Women" class="me-2">
+                                    <label for="Women" class="me-4">Women</label>
+                                    <input type="radio" id="Kids" asp-for="ProductGender" value="Kids" class="me-2">
+                                    <label for="Kids">Kids</label>
+                                </div>
+                                <span asp-validation-for="ProductGender" class="text-danger position-relative"></span>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="my-3 position-relative">
+                                    <input asp-for="ProductCategoryId" type="hidden" class="form-control rounded-0">
+                                    <label for="ProductCategoryId" class="categoryLabel">Category</label>
+                                    <span asp-validation-for="ProductCategoryId" class="text-danger position-relative"></span>
+                                    <div class="dropdown categoryDropdown">
+                                        <ul>
+                                            @foreach (Category item in categories)
+                                            {
+                                                <li id="@item.CategoryId">@item.CategoryName</li>
+                                            }
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
                                 <div class="form-floating my-3">
                                     <input asp-for="ProductWeight" class="form-control rounded-0" placeholder="Weight">
                                     <label for="ProductWeight">Weight</label>
+                                    <span asp-validation-for="ProductWeight" class="text-danger position-relative"></span>
                                 </div>
                             </div>
-                            <div class="col-lg-6 mb-3">
-                                <div class="form-floating my-3 d-flex flex-wrap align-items-center position-relative">
-                                    <input asp-for="ProductWeight" class="form-control rounded-0 colorInput" placeholder="Weight">
-                                    <label  for="ProductColor" class="colorLabel">Color</label>
-                                    <div class="selectColor">
-                                        <span class="swatch-color js-filter-color" colorid="1" style="color: #f5e0cc !important"></span>
-                                        <span class="swatch-color js-filter-color" colorid="2" style="color: #000 !important"></span>
-                                        <span class="swatch-color js-filter-color" colorid="3" style="color: #71b2ff !important"></span>
-                                        <span class="swatch-color js-filter-color" colorid="4" style="color: #8b572a !important"></span>
-                                        <span class="swatch-color js-filter-color" colorid="5" style="color: #a52c36 !important"></span>
-                                        <span class="swatch-color js-filter-color" colorid="6" style="color: #1f3897 !important"></span>
-                                        <span class="swatch-color js-filter-color" colorid="7" style="color: #ede9de !important"></span>
-                                        <span class="swatch-color js-filter-color" colorid="8" style="color: #ddd !important"></span>
-                                        <span class="swatch-color js-filter-color" colorid="9" style="color: #7ed321 !important"></span>
-                                        <span class="swatch-color js-filter-color" colorid="10" style="color: #8b9955 !important"></span>
-                                        <span class="swatch-color js-filter-color" colorid="11" style="color: #f5a623 !important"></span>
-                                        <span class="swatch-color js-filter-color" colorid="12" style="color: #ffa8e7 !important"></span>
-                                        <span class="swatch-color js-filter-color" colorid="13" style="color: #8331cc !important"></span>
-                                        <span class="swatch-color js-filter-color" colorid="14" style="color: #de001b !important"></span>
-                                        <span class="swatch-color js-filter-color" colorid="15" style="color: #fff !important"></span>
-                                        <span class="swatch-color js-filter-color" colorid="16" style="color: #ffe500 !important"></span>
-                                        <span class="swatch-color js-filter-color" colorid="17" style="color: #46c49e !important"></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 mb-3">
+                            <div class="col-lg-6">
                                 <div class="form-floating my-3">
                                     <input asp-for="ProductCountry" class="form-control rounded-0" placeholder="Country">
                                     <label for="ProductCountry">Country</label>
+                                    <span asp-validation-for="ProductCountry" class="text-danger position-relative"></span>
                                 </div>
                             </div>
-                            <div class="col-lg-6 mb-3">
-                                <div class="my-3">
-                                    @* <label  for="ProductSize">Size</label> *@
-                                    <div class="d-flex flex-wrap align-items-center py-2">
-                                        <span class="me-auto">Size:</span>
-                                        <span class="swatch-size rounded-0 btn me-3 js-filter-size">XS</span>
-                                        <span class="swatch-size rounded-0 btn me-3 js-filter-size">S</span>
-                                        <span class="swatch-size rounded-0 btn me-3 js-filter-size">M</span>
-                                        <span class="swatch-size rounded-0 btn me-3 js-filter-size">L</span>
-                                        <span class="swatch-size rounded-0 btn me-3 js-filter-size">XL</span>
-                                        <span class="swatch-size rounded-0 btn js-filter-size">XXL</span>
-                                    </div>
-                                    @* <input asp-for="ProductSize" class="form-control rounded-0" placeholder="Size"> *@
-                                </div>
-                            </div>
-                            <div class="col-lg-12 mb-3">
+                            <div class="col-lg-12 my-3">
                                 <textarea asp-for="ProductAbout" rows="4" cols="50" class="form-control rounded-0" placeholder="About"></textarea>
+                                <span asp-validation-for="ProductAbout" class="text-danger position-relative"></span>
                             </div>
+                            <div class="col-lg-12">
+                                <div class="my-3 position-relative w-50">
+                                    <input name="productPhoto" id="ProductPhoto" type="file" class="form-control d-none">
+                                    <label for="ProductPhoto" class="photoLabel">Select photos</label>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-camera-fill" viewBox="0 0 16 16">
+                                        <path d="M10.5 8.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0" />
+                                        <path d="M2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4zm.5 2a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1m9 2.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0" />
+                                    </svg>
+                                </div>
+                                <div class="form-control pb-3">
+                                    <div class="product-imgs">
+                                    </div>
+                                </div>
+                            </div>
+                            @* <span asp-validation-for="productPhoto" class="text-danger position-relative"></span> *@
                         </div>
-                        <button type="submit" class="btn btn-primary">Add</button>
+                        <button class="btn btn-primary mt-3">Add</button>
                     </form>
                 </div>
             </div>

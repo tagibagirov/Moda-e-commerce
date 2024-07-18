@@ -17,13 +17,10 @@
                 <div class="selected fw-500 text-end pe-3">Default Sorting</div>
                 <ul class="options-list">
                     <li class="option"><a href="@Url.Action("Shop", new{sort = 0})">Default Sorting</a></li>
-                    @* <li class="option"><a href="@Url.Action("Shop", new{sort = 1})">Best selling</a></li> *@
                     <li class="option"><a href="@Url.Action("Shop", new{sort = 2})">Alphabetically, A-Z</a></li>
                     <li class="option"><a href="@Url.Action("Shop", new{sort = 3})">Alphabetically, Z-A</a></li>
                     <li class="option"><a href="@Url.Action("Shop", new{sort = 4})">Price, low to high</a></li>
                     <li class="option"><a href="@Url.Action("Shop", new{sort = 5})">Price, high to low</a></li>
-                    @* <li class="option">Date, old to new</li>
-                    <li class="option">Date, new to old</li> *@
                 </ul>
             </div>
             <div class="shop-asc__seprator mx-3 d-none d-md-block order-md-0"></div>
@@ -55,7 +52,7 @@
             @await Html.PartialAsync("_card", item)
         }
     </div>
-    <div class="w-100">
+   @*  <div class="w-100">
         <p class="mb-1 text-center fw-500">SHOWING 36 of 497 items</p>
         <div class="progress rounded progress_uomo mb-3 m-auto">
             <div class="progress-bar rounded dark" style="width: 39%;"></div>
@@ -64,7 +61,7 @@
         <div class="text-center">
             <a class="btn-link btn-link_lg text-uppercase fw-500" href="#">Show More</a>
         </div>
-    </div>
+    </div> *@
 
 </section>
 <div class="page-overlay d-none position-absolute top-0 start-0 w-100">
@@ -105,10 +102,9 @@
             <div class="accordion" id="color-filters">
                 <div class=" mb-4">
                     <h5 class="accordion-header" id="accordion-heading-11">
-                        <button class="accordion-button p-0 border-0 fs-5 text-uppercase" type="button"
-                                data-bs-toggle="collapse" data-bs-target="#accordion-filter-2" aria-expanded="true"
-                                aria-controls="accordion-filter-2">
+                        <button class="accordion-button p-0 border-0 fs-5 text-uppercase collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accordion-filter-2" aria-expanded="false" aria-controls="accordion-filter-2">
                             Color
+                            
                         </button>
                     </h5>
                     <div id="accordion-filter-2" class="accordion-collapse collapse show border-0"
@@ -117,7 +113,7 @@
                             <div class="d-flex flex-wrap">
                                 @foreach (Color item in ViewBag.Colors)
                                 {
-                                    <span class="swatch-color js-filter-color" colorId="@item.ColorId" style="color: @item.ColorHexCode !important"></span>
+                                    <span class="swatch-color js-filter-color" colorId="@item.ColorId" colorName="@item.ColorName" style="color: @item.ColorHexCode !important"></span>
                                 }
                             </div>
                         </div>
@@ -138,12 +134,10 @@
                          aria-labelledby="accordion-heading-size" data-bs-parent="#size-filters">
                         <div class="accordion-body px-0 pb-0 pt-4">
                             <div class="d-flex flex-wrap">
-                                <span class="swatch-size rounded-0 btn  mb-3 me-3 js-filter-size">XS</span>
-                                <span class="swatch-size rounded-0 btn mb-3 me-3 js-filter-size">S</span>
-                                <span class="swatch-size rounded-0 btn mb-3 me-3 js-filter-size">M</span>
-                                <span class="swatch-size rounded-0 btn mb-3 me-3 js-filter-size">L</span>
-                                <span class="swatch-size rounded-0 btn mb-3 me-3 js-filter-size">XL</span>
-                                <span class="swatch-size rounded-0 btn mb-3 me-3 js-filter-size">XXL</span>
+                                @foreach (Size item in ViewBag.Sizes)
+                                {
+                                <span class="swatch-size rounded-0 btn  mb-3 me-3 js-filter-size" sizeId="@item.SizeId" sizeName="@item.SizeName">@item.SizeName</span>
+                                }
                             </div>
                         </div>
                     </div>
@@ -161,12 +155,12 @@
                          aria-labelledby="accordion-heading-brand" data-bs-parent="#brand-filters">
                         <div class="search-field multi-select accordion-body px-0 pb-0 pt-4">
                             <div class="search-field__input-wrapper mb-3 position-relative">
-                                <input type="text" name="search_text" class="search-field__input form-control form-control-sm rounded-0 js-search-category" placeholder="SEARCH">
+                                <input type="text" name="search_text" class="search-field__input form-control form-control-sm rounded-0 js-search-brand" placeholder="SEARCH">
                             </div>
                             <ul class="multi-select__list list-unstyled category-list">
                                 @foreach (Brand item in ViewBag.Brands)
                                 {
-                                    <li class="multi-select__item py-2 position-relative js-filter-brand" brandId ="@item.BrandId">
+                                    <li class="multi-select__item py-2 position-relative js-filter-brand" brandId="@item.BrandId" brandName="@item.BrandName">
                                         <span class="me-auto">@item.BrandName</span>
                                         <span class="text-secondary">2</span>
                                     </li>
@@ -181,79 +175,27 @@
                     <h5 class="accordion-header mb-2" id="accordion-heading-price">
                         <button class="accordion-button p-0 border-0 fs-5 text-uppercase" type="button"
                                 data-bs-toggle="collapse" data-bs-target="#accordion-filter-price" aria-expanded="true"
-                                aria-controls="accordion-filter-price">
-                            Price
-
-                        </button>
+                                aria-controls="accordion-filter-price">Price</button>
                     </h5>
                     <div id="accordion-filter-price" class="accordion-collapse collapse show border-0"
                          aria-labelledby="accordion-heading-price" data-bs-parent="#price-filters">
-                        <div class="slider slider-horizontal" id="">
-                            <div class="slider-track">
-                                <div class="slider-track-low" style="left: 0px; width: 24.2424%;"></div>
-                                <div class="slider-selection" style="left: 24.2424% !important; width: 20.202% !important;"></div>
-                                <div class="slider-track-high" style="right: 0px; width: 55.5556%;"></div>
-                            </div>
-                            <div class="tooltip tooltip-main bs-tooltip-top" role="presentation"
-                                 style="left: 34.3434%;">
-                                <div class="arrow"></div>
-                                <div class="tooltip-inner">$250,450</div>
-                            </div>
-                            <div class="tooltip tooltip-min bs-tooltip-top" role="presentation"
-                                 style="left: 24.2424%;">
-                                <div class="arrow"></div>
-                                <div class="tooltip-inner">$250</div>
-                            </div>
-                            <div class="tooltip tooltip-max bs-tooltip-bottom" role="presentation"
-                                 style="left: 44.4444%; top: 18px;">
-                                <div class="arrow"></div>
-                                <div class="tooltip-inner">$450</div>
-                            </div>
-                            <div class="slider-handle min-slider-handle round" role="slider" aria-valuemin="10"
-                                 aria-valuemax="1000" aria-valuenow="250" aria-valuetext="$250" tabindex="0"
-                                 style="left: 24.2424%;"></div>
-                            <div class="slider-handle max-slider-handle round" role="slider" aria-valuemin="10"
-                                 aria-valuemax="1000" aria-valuenow="450" aria-valuetext="$450" tabindex="0"
-                                 style="left: 44.4444%;"></div>
-                        </div><input class="price-range-slider" type="text" name="price_range" value="250,450"
-                                     data-slider-min="10" data-slider-max="1000" data-slider-step="5"
-                                     data-slider-value="[250,450]" data-currency="$" data-value="250,450"
-                                     style="display: none;">
+                        
                         <div class="price-range__info d-flex align-items-center mt-2">
-                            <div class="me-auto">
-                                <span class="text-secondary">Min Price: </span>
-                                <span class="price-range__min">$250</span>
+                            <div class="me-4">
+                                <input id="MinPrice" type="number" class="form-control rounded-0" placeholder="Min Price:">
                             </div>
-                            <div>
-                                <span class="text-secondary">Max Price: </span>
-                                <span class="price-range__max">$450</span>
+                            <hr style="width: 30px; height: 2px; color: #222"/>
+                            <div class="ms-4">
+                                <input id="MaxPrice" type="number" class="form-control rounded-0" placeholder="Max Price:">
                             </div>
                         </div>
+                        <span class="text-danger fs-6 priceError" style="display: none"></span>
                     </div>
                 </div>
             </div><!-- /.accordion -->
             <div class="filter-active-tags pt-2">
-                <button class="btn rounded-0 py-1 px-3 btn d-inline-flex align-items-center rounded-0 py-1 px-3 mb-3 me-3 text-uppercase js-filter">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
-                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
-                    </svg>
-                    <span class="ms-2">Blues</span>
-                </button>
-                <button class="btn rounded-0 py-1 px-3 d-inline-flex align-items-center mb-3 me-3 text-uppercase js-filter">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
-                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
-                    </svg>
-                    <span class="ms-2">Max Price: $493</span>
-                </button>
-                <button class="btn rounded-0 py-1 px-3 d-inline-flex align-items-center mb-3 text-uppercase js-filter">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
-                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
-                    </svg>
-                    <span class="ms-2">Zara</span>
-                </button>
-
                 <div>
-                    <button class="btn rounded-0 py-1 px-3 d-flex align-items-center text-uppercase js-filter">
+                    <button class="btn rounded-0 py-1 px-3 d-flex align-items-center text-uppercase mb-3 me-3 js-reset-filter">
                         <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
                             <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
                         </svg>

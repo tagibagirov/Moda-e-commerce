@@ -33,8 +33,7 @@
                                     <td>#@item.CargoId</td>
                                     <td>@item.CargoTime</td>
                                     <td>
-                                        <select class="form-control orderLevel" cargoId="@item.CargoId" asp-items="ViewBag.Levels">
-                                        </select>
+                                        <select class="form-control orderLevel" asp-for="@item.CargoLevelId" cargoId="@item.CargoId" asp-items="ViewBag.Levels"></select>
                                     </td>
                                     <td>$@item.CargoPrice for 3 items</td>
                                     <td><button class="btn btn-primary">VIEW</button></td>
